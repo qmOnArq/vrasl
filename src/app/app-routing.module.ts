@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomePageComponent } from './routes/home-page/home-page.component';
+import { DictionaryPageComponent } from './routes/dictionary-page/dictionary-page.component';
 
 const routes: Routes = [
     {
         path: '',
-        component: HomePageComponent,
+        component: DictionaryPageComponent,
     },
 ];
 

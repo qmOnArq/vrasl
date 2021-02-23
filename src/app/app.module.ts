@@ -4,10 +4,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AvatarRendererComponent } from './components/avatar-renderer/avatar-renderer.component';
-import { HomePageComponent } from './routes/home-page/home-page.component';
+import { DictionaryPageComponent } from './routes/dictionary-page/dictionary-page.component';
 
 @NgModule({
-    declarations: [AppComponent, AvatarRendererComponent, HomePageComponent],
+    declarations: [AppComponent, AvatarRendererComponent, DictionaryPageComponent],
     imports: [BrowserModule, AppRoutingModule],
     providers: [],
     bootstrap: [AppComponent],
