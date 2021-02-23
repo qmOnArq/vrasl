@@ -4,6 +4,7 @@ import { promisify } from 'util';
 import * as YAML from 'yamljs';
 import { glob as globRegular } from 'glob';
 const glob = promisify(globRegular);
+import * as LZString from 'lz-string';
 
 const start = async () => {
     const files = await glob(path.resolve(__dirname, '../static-files/anims/*.anim'));
@@ -30,14 +31,16 @@ const start = async () => {
             curves,
         };
 
+        const compressedData = LZString.compress(JSON.stringify(finalData, null, 0));
+
         const fileNameSplit = file.split('/');
         const fileNameYaml = fileNameSplit[fileNameSplit.length - 1];
         const fileNameSplit2 = fileNameYaml.split('.');
-        fileNameSplit2[fileNameSplit2.length - 1] = 'json';
+        fileNameSplit2[fileNameSplit2.length - 1] = 'lzs';
 
         const fileName = fileNameSplit2.join('.');
         const filePath = path.resolve(__dirname, `../dist/anim-files/${fileName}`);
-        fs.writeFileSync(filePath, JSON.stringify(finalData, null, 0));
+        fs.writeFileSync(filePath, compressedData);
     });
 };
 
