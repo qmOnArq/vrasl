@@ -1,1 +1,16 @@
-<router-outlet></router-outlet>
+<div class="main">
+    <router-outlet></router-outlet>
+</div>
+
+<div class="iframe">
+    <iframe
+        #iframe
+        src="assets/unity/index.html"
+    ></iframe>
+
+    <div
+        *ngIf="loading$ | async"
+        class="loader"
+    ></div>
+</div>
+

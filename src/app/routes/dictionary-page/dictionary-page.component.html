@@ -1,7 +1,7 @@
-<div class="left">
+<div *ngFor="let word of words" style="margin: 10px">
+    <button
 
+        (click)="click(word)"
+    >{{ word.substr(4, 10000) }}</button>
 </div>
 
-<div class="right">
-
-</div>
