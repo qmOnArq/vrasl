@@ -10,6 +10,7 @@ export interface WordDefinition {
     index?: boolean;
     red?: boolean;
     oculus?: boolean;
+    hidden?: boolean;
 }
 
 export interface CategoryDefinition {

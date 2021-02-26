@@ -5,11 +5,12 @@ import { AppComponent } from './app.component';
 import { DictionaryPageComponent } from './routes/dictionary-page/dictionary-page.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { WordNamePipe } from './pipes/word-name.pipe';
 
 @NgModule({
-    declarations: [AppComponent, DictionaryPageComponent],
+    declarations: [AppComponent, DictionaryPageComponent, WordNamePipe],
     imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
-    providers: [],
+    providers: [WordNamePipe],
     bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -3,50 +3,50 @@ import { CategoryDefinition } from '../types/base.types';
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @typescript-eslint/quotes */
 
-export const Categories: Readonly<CategoryDefinition[]> = [
+export const AslWordsCategories: Readonly<CategoryDefinition[]> = [
     {
         name: 'Daily Use',
         words: [
             'ASL-Hello',
             'ASL-How Are You',
             'ASL-Whatsup',
-            // TODO What's up (v2)
-            // TODO Nice to meet you
+            'whats up',
+            'gt4nicemeetyou',
             'ASL-Good',
             'ASL-Bad',
-            // TODO Yes
-            // TODO No
-            // TODO So-so
-            // TODO Sick - INDEX
-            // TODO Sick (v2)
-            // TODO Hurt
+            'gt4yes',
+            'gt4no',
+            'gt4soso',
+            'gt4sick',
+            'sick',
+            'hurt (fingers too far apart)',
             'ASL-Your Welcome',
-            // TODO Goodbye
+            'goodbyetxt',
             'ASL-Good Morning',
             'ASL-Good Afternoon',
             'ASL-Good Evening',
             'ASL-Good Night',
-            // TODO See you later
-            // TODO Please
-            // TODO Sorry
-            // TODO Forget
-            // TODO Sleep / Sleepy
-            // TODO Bed
-            // TODO Jump / Change world - RED
-            // TODO Thank you
-            // TODO I love you
+            'gt4seeyoulater',
+            'gt4please',
+            'gt4sorry',
+            'gt4forget',
+            'gt4sleep',
+            'ASL-Bed',
+            'gt4jumpchangeworlds',
+            'thankyoutxt',
+            'gt4iloveyou',
             'ASL-ILY',
             'ASL-Go Away',
-            // TODO Going to - RED
-            // TODO Follow
+            'gt4goingto',
+            'gt4follow',
             'ASL-Come',
-            // TODO Hearing (Person)
-            // TODO Deaf
-            // TODO Deaf (v2)
-            // TODO Hard of Hearing
+            'gt4hearing',
+            'gt4deaf',
+            'gt4deaf2',
+            'gt4hoh',
             'ASL-Mute',
-            // TODO Write Slow
-            // TODO Can't read
+            'gt4writeslow',
+            'gt4cantread',
             'ASL-Away',
         ],
     },
@@ -54,14 +54,14 @@ export const Categories: Readonly<CategoryDefinition[]> = [
         name: 'Pointing use Question / Answer',
         words: [
             'ASL-I',
-            // TODO Him/Her/He/She/It/You - RED
+            'ASL-Him',
             'ASL-Her',
             'ASL-My',
-            // TODO His/Hers/Its/Your
+            'ASL-Your',
             'ASL-We',
             'ASL-They',
             'ASL-Their',
-            // TODO Over There - RED
+            'gt4overthere',
             'ASL-Our',
             'ASL-Its',
             'ASL-Inside',
@@ -73,8 +73,8 @@ export const Categories: Readonly<CategoryDefinition[]> = [
             'ASL-Below',
             'ASL-Here',
             'ASL-Beside',
-            // TODO Back
-            // TODO Front
+            'gt4back',
+            'gt4front',
             'ASL-Who',
             'ASL-Where',
             'ASL-When',
@@ -83,7 +83,7 @@ export const Categories: Readonly<CategoryDefinition[]> = [
             'ASL-What',
             'ASL-What2',
             'ASL-How',
-            // TODO How (v2)
+            'ASL-How_0',
             'ASL-How Many',
             'ASL-How Many2',
             'ASL-Can',
@@ -93,7 +93,7 @@ export const Categories: Readonly<CategoryDefinition[]> = [
             'ASL-Get',
             'ASL-Will',
             'ASL-Take',
-            // TODO Need - INDEX
+            'gt4need',
             'ASL-Must',
             'ASL-Not',
             'ASL-Or',
@@ -197,10 +197,10 @@ export const Categories: Readonly<CategoryDefinition[]> = [
             'ASL-Hate',
             'ASL-Fine',
             'ASL-Tired',
-            // TODO Sleep / Sleepy
+            'gt4sleep',
             'ASL-Confused',
             'ASL-Smart',
-            // TODO Attention / Focus
+            'ASL-Focus',
             'ASL-Nevermind',
             'ASL-Angry',
             'ASL-Laughing',
@@ -221,7 +221,7 @@ export const Categories: Readonly<CategoryDefinition[]> = [
             'ASL-Happy',
             'ASL-Sad',
             'ASL-Suffering',
-            // TODO Surprised
+            'ASL-Surprise',
             'ASL-Careful',
             'ASL-Enjoy',
             'ASL-Disgusted',
@@ -544,12 +544,12 @@ export const Categories: Readonly<CategoryDefinition[]> = [
             'ASL-Dirty',
             'ASL-Disappear',
             'ASL-Disappoint',
-            // TODO Disapprove
+            'ASL-Not Accept',
             'ASL-Discuss',
             'ASL-Disguise',
-            // TODO Disgust
+            'ASL-Disgusted',
             'ASL-Dismiss',
-            // TODO Don't Disturb
+            'ASL-Bother',
             'ASL-Doubt',
             'ASL-Dream',
             'ASL-Dress',
@@ -716,7 +716,7 @@ export const Categories: Readonly<CategoryDefinition[]> = [
             'ASL-Steal',
             'ASL-Stop',
             'ASL-Study',
-            // TODO Suffer
+            'ASL-Suffering',
             'ASL-Switch',
             'ASL-Take',
             'ASL-Communicate',
@@ -1320,8 +1320,8 @@ export const Categories: Readonly<CategoryDefinition[]> = [
             'ASL-Doctor',
             'ASL-Nurse',
             'ASL-Hospital',
-            // TODO Sick
-            // TODO Hurt
+            'gt4sick',
+            'hurt (fingers too far apart)',
             'ASL-Fever',
             'ASL-Diarrhea',
             'ASL-Vomit',
