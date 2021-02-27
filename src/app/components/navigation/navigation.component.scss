@@ -51,7 +51,7 @@ nav {
     border-bottom: 4px solid transparent;
 
     &:hover {
-        a {
+        span {
             transition: color 0s;
             color: $active-color;
         }

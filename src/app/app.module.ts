@@ -12,6 +12,8 @@ import { AslWordButtonComponent } from './components/asl-word-button/asl-word-bu
 import { CurrentWordLabelComponent } from './components/current-word-label/current-word-label.component';
 import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
 import { LoaderComponent } from './components/loader/loader.component';
+import { CollapsableComponent } from './components/collapsable/collapsable.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
     declarations: [
@@ -23,8 +25,9 @@ import { LoaderComponent } from './components/loader/loader.component';
         AslWordButtonComponent,
         CurrentWordLabelComponent,
         LoaderComponent,
+        CollapsableComponent,
     ],
-    imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, SnotifyModule],
+    imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, SnotifyModule, BrowserAnimationsModule],
     providers: [WordNamePipe, { provide: 'SnotifyToastConfig', useValue: ToastDefaults }, SnotifyService],
     bootstrap: [AppComponent],
 })

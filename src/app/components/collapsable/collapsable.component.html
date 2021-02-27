@@ -1,0 +1,26 @@
+<div
+    class="collapse-header"
+    (click)="toggleCollapsed()"
+>
+    <div class="collapse-header-title">
+        <span>{{ title }}</span>
+    </div>
+
+    <div
+        class="collapse-header-chevron"
+        [class.expanded]="!collapsed"
+    >
+        <span class="material-icons-round">
+            chevron_right
+        </span>
+    </div>
+</div>
+
+<div
+    class="collapse-content"
+    [@collapse]="collapsed"
+>
+    <div>
+        <ng-content></ng-content>
+    </div>
+</div>

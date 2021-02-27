@@ -6,6 +6,7 @@ import { AslWordsDefinitions } from '../../definitions/asl-words-definitions';
 import { WordNamePipe } from '../../pipes/word-name.pipe';
 import { BehaviorSubject } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
+import { AslWordsCategories } from '../../definitions/asl-words-categories';
 
 @Component({
     selector: 'a-dictionary-page',
@@ -17,6 +18,8 @@ import { ActivatedRoute } from '@angular/router';
 export class DictionaryPageComponent implements OnInit {
     allWords: AslWord[] = [];
     filteredWords$ = new BehaviorSubject<AslWord[]>([]);
+
+    categories = AslWordsCategories;
 
     categoriesMode = this.userSettings.getShowCategories();
     favoritesOnly = this.userSettings.getShowOnlyFavorites();

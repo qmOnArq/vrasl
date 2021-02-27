@@ -26,9 +26,27 @@
 </div>
 
 <ng-container *ngIf="!categoriesMode">
-    <a-asl-word-button
-        *ngFor="let word of (filteredWords$ | async)"
-        [word]="word"
-        (wordClicked)="wordSelected(word)"
-    ></a-asl-word-button>
+    <a-collapsable
+        [disabled]="true"
+        [title]="'Words'"
+    >
+        <a-asl-word-button
+            *ngFor="let word of (filteredWords$ | async)"
+            [word]="word"
+            (wordClicked)="wordSelected(word)"
+        ></a-asl-word-button>
+    </a-collapsable>
+</ng-container>
+
+<ng-container *ngIf="categoriesMode">
+    <a-collapsable
+        *ngFor="let category of categories"
+        [title]="category.name"
+    >
+        <a-asl-word-button
+            *ngFor="let word of category.words"
+            [word]="word"
+            (wordClicked)="wordSelected(word)"
+        ></a-asl-word-button>
+    </a-collapsable>
 </ng-container>
