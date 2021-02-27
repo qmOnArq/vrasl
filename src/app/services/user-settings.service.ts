@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AslWord } from '../definitions/asl-words';
-import * as _ from 'lodash';
+import { uniq } from './helpers';
 
 @Injectable({ providedIn: 'root' })
 export class UserSettingsService {
@@ -41,7 +41,7 @@ export class UserSettingsService {
         const newCategories = value
             ? [category, ...this.getExpandedCategories()]
             : this.getExpandedCategories().filter(w => w !== category);
-        this.setExpandedCategories(_.uniq(newCategories));
+        this.setExpandedCategories(uniq(newCategories));
     }
 
     getExpandedCategories() {
@@ -69,7 +69,7 @@ export class UserSettingsService {
         }
 
         const newFavorites = value ? [word, ...this.getFavorites()] : this.getFavorites().filter(w => w !== word);
-        this.setFavorites(_.uniq(newFavorites));
+        this.setFavorites(uniq(newFavorites));
     }
 
     getFavorites() {
@@ -97,7 +97,7 @@ export class UserSettingsService {
         }
 
         const newQuizWords = value ? [word, ...this.getQuizWords()] : this.getQuizWords().filter(w => w !== word);
-        this.setQuizWords(_.uniq(newQuizWords));
+        this.setQuizWords(uniq(newQuizWords));
     }
 
     getQuizWords() {

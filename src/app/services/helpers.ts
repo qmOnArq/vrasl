@@ -27,7 +27,14 @@
  *                              (only exception is empty string, which is true due
  *                               accepting solo disabled and disabled="" as true)
  */
+// eslint-disable-next-line prefer-arrow/prefer-arrow-functions
 export function toBoolean(val: unknown) {
     // checks all falsy js values (false, undefined, null, 0, NaN) except empty string ("") and as falsy is accepted also string "false"
+    // eslint-disable-next-line max-len
     return val !== false && val !== 'false' && val !== undefined && val !== null && val !== 0 && val === val; // val===val is check for NaN (it does not equal itself)
+}
+
+// eslint-disable-next-line prefer-arrow/prefer-arrow-functions
+export function uniq<T>(array: T[] | Readonly<T[]>) {
+    return array.filter((value, index, self) => self.indexOf(value) === index);
 }

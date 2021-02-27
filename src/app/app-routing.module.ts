@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DictionaryPageComponent } from './routes/dictionary-page/dictionary-page.component';
+import { EmptyPageComponent } from './routes/empty-page/empty-page.component';
 
 const routes: Routes = [
     {
@@ -18,15 +19,15 @@ const routes: Routes = [
     },
     {
         path: 'spelling-quiz',
-        component: DictionaryPageComponent,
+        component: EmptyPageComponent,
     },
     {
         path: 'word-quiz',
-        component: DictionaryPageComponent,
+        component: EmptyPageComponent,
     },
     {
         path: 'settings',
-        component: DictionaryPageComponent,
+        component: EmptyPageComponent,
     },
 ];
 

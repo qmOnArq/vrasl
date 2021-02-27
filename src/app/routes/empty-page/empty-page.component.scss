@@ -1,0 +1,21 @@
+:host {
+    width: 100%;
+    height: calc(100% - var(--navigation-height));
+    text-align: center;
+    padding: 100px;
+}
+
+.sadge {
+    margin: 25px auto;
+    background: url('../../../assets/sadge.png');
+    height: 165px;
+    width: 225px;
+}
+
+span {
+    display: block;
+    padding: 25px 0;
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--color-1)
+}

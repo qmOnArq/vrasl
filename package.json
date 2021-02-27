@@ -5,7 +5,8 @@
         "ng": "ng",
         "dev": "ng serve",
         "start": "ng serve",
-        "build": "ng build",
+        "build:dev": "ng build",
+        "build:prod": "ng build --prod",
         "lint": "ng lint"
     },
     "dependencies": {
