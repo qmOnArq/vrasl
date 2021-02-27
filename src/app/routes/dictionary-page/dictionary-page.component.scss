@@ -5,3 +5,8 @@
     height: calc(100% - var(--navigation-height));
     width: 100%
 }
+
+label {
+    cursor: pointer;
+    user-select: none;
+}

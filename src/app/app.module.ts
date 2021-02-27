@@ -8,9 +8,10 @@ import { FormsModule } from '@angular/forms';
 import { WordNamePipe } from './pipes/word-name.pipe';
 import { PlayerControlsComponent } from './components/player-controls/player-controls.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
+import { AslWordButtonComponent } from './components/asl-word-button/asl-word-button.component';
 
 @NgModule({
-    declarations: [AppComponent, DictionaryPageComponent, WordNamePipe, PlayerControlsComponent, NavigationComponent],
+    declarations: [AppComponent, DictionaryPageComponent, WordNamePipe, PlayerControlsComponent, NavigationComponent, AslWordButtonComponent],
     imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
     providers: [WordNamePipe],
     bootstrap: [AppComponent],
