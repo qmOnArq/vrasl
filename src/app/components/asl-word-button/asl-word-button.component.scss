@@ -7,8 +7,8 @@
     margin: 2px 0;
 
     &:hover {
-        background: #f8f7fd;
-        outline: 2px solid #f8f7fd;
+        background: var(--color-gray-1);
+        outline: 2px solid var(--color-gray-1);
 
         .share-button,
         .quiz-button,

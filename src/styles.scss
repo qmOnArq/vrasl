@@ -1,9 +1,12 @@
 @import "~ng-snotify/styles/material";
 @import 'variables';
+@import 'checkbox';
 
 * {
     box-sizing: border-box;
     font-family: 'Lato', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 body, html {
@@ -11,6 +14,21 @@ body, html {
     margin: 0;
     background: var(--color-3);
     color: var(--color-1);
+}
+
+::placeholder {
+    color: var(--color-1);
+    opacity: 0.4;
+}
+
+:-ms-input-placeholder {
+    color: var(--color-1);
+    opacity: 0.4;
+}
+
+::-ms-input-placeholder {
+    color: var(--color-1);
+    opacity: 0.4;
 }
 
 button {
@@ -26,6 +44,10 @@ button {
     --color-6: #c69b3f;
     --color-7: #e5d166;
     --color-8: #504935;
+
+    --color-gray-1: #f8f7fd;
+    --color-gray-2: #f4f2fc;
+    --color-gray-3: #d8ddef;
 
     --navigation-height: 46px;
 

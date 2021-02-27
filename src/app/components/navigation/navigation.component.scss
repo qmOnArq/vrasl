@@ -6,6 +6,7 @@
     overflow: hidden;
     background: var(--color-1);
     box-shadow: var(--shadow-1);
+    text-align: center;
 }
 
 nav {
@@ -22,8 +23,9 @@ nav {
     flex-direction: column;
     justify-content: center;
     font-weight: bold;
-    padding: 0 10px;
+    padding: 0 20px;
     pointer-events: none;
+    font-size: 16px;
 }
 
 .navigation-items {

@@ -6,6 +6,7 @@ import { AslWordsDefinitions } from '../../definitions/asl-words-definitions';
 import { WordNamePipe } from '../../pipes/word-name.pipe';
 import { BehaviorSubject } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
+import { CategoryDefinition } from '../../types/base.types';
 import { AslWordsCategories } from '../../definitions/asl-words-categories';
 
 @Component({
@@ -18,8 +19,7 @@ import { AslWordsCategories } from '../../definitions/asl-words-categories';
 export class DictionaryPageComponent implements OnInit {
     allWords: AslWord[] = [];
     filteredWords$ = new BehaviorSubject<AslWord[]>([]);
-
-    categories = AslWordsCategories;
+    filteredCategories$ = new BehaviorSubject<CategoryDefinition[]>([]);
 
     categoriesMode = this.userSettings.getShowCategories();
     favoritesOnly = this.userSettings.getShowOnlyFavorites();
@@ -54,12 +54,16 @@ export class DictionaryPageComponent implements OnInit {
     }
 
     filterWords() {
-        this.filteredWords$.next(
-            this.allWords.filter(word => {
-                const matchesFavorites = !this.favoritesOnly || this.userSettings.getFavorites().includes(word);
-                const matchesQuery = word.toLocaleLowerCase().includes(this.filterQuery.toLocaleLowerCase());
-                return matchesFavorites && matchesQuery;
-            }),
+        this.filteredWords$.next(this.filterWordsList(this.allWords));
+
+        this.filteredCategories$.next(
+            AslWordsCategories.map(category => {
+                const words: AslWord[] = this.filterWordsList(category.words);
+                return {
+                    name: category.name,
+                    words,
+                };
+            }).filter(category => category.words.length > 0),
         );
     }
 
@@ -83,5 +87,16 @@ export class DictionaryPageComponent implements OnInit {
         this.favoritesOnly = enabled;
         this.userSettings.setShowOnlyFavorites(enabled);
         this.filterWords();
+    }
+
+    private filterWordsList(words: AslWord[] | Readonly<AslWord[]>) {
+        return words.filter(word => {
+            const matchesFavorites = !this.favoritesOnly || this.userSettings.getFavorites().includes(word);
+            const matchesQuery = this.wordNamePipe
+                .transform(word)
+                .toLocaleLowerCase()
+                .includes(this.filterQuery.toLocaleLowerCase());
+            return matchesFavorites && matchesQuery;
+        });
     }
 }

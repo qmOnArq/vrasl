@@ -1,52 +1,63 @@
 <div class="header">
-    <input
-        type="text"
-        placeholder="Filter"
-        [ngModel]="filterQuery"
-        (ngModelChange)="onFilterQueryChange($event)"
-    >
+    <div class="input-wrapper">
+        <a-input-search
+            [value]="filterQuery"
+            (valueChange)="onFilterQueryChange($event)"
+        ></a-input-search>
+    </div>
 
-    <label>
+    <div>
         <input
             type="checkbox"
             [ngModel]="categoriesMode"
             (ngModelChange)="onCategoriesModeChange($event)"
+            id="dictionary-page-categories-mode"
         >
-        Categories
-    </label>
+        <label for="dictionary-page-categories-mode">
+            <span></span>
+            Categories
+        </label>
+    </div>
 
-    <label>
+    <div>
         <input
             type="checkbox"
             [ngModel]="favoritesOnly"
             (ngModelChange)="onFavoritesOnlyChange($event)"
+            id="dictionary-page-favorites-only"
         >
-        Favorites
-    </label>
+        <label for="dictionary-page-favorites-only">
+            <span></span>
+            Favorites
+        </label>
+    </div>
 </div>
 
-<ng-container *ngIf="!categoriesMode">
-    <a-collapsable
-        [disabled]="true"
-        [title]="'Words'"
-    >
-        <a-asl-word-button
-            *ngFor="let word of (filteredWords$ | async)"
-            [word]="word"
-            (wordClicked)="wordSelected(word)"
-        ></a-asl-word-button>
-    </a-collapsable>
-</ng-container>
+<div class="content">
+    <ng-container *ngIf="!categoriesMode">
+        <a-collapsable
+            [disabled]="true"
+            [title]="'Words'"
+        >
+            <a-asl-word-button
+                *ngFor="let word of (filteredWords$ | async)"
+                [word]="word"
+                (wordClicked)="wordSelected(word)"
+            ></a-asl-word-button>
+        </a-collapsable>
+    </ng-container>
 
-<ng-container *ngIf="categoriesMode">
-    <a-collapsable
-        *ngFor="let category of categories"
-        [title]="category.name"
-    >
-        <a-asl-word-button
-            *ngFor="let word of category.words"
-            [word]="word"
-            (wordClicked)="wordSelected(word)"
-        ></a-asl-word-button>
-    </a-collapsable>
-</ng-container>
+    <ng-container *ngIf="categoriesMode">
+        <a-collapsable
+            *ngFor="let category of (filteredCategories$ | async)"
+            [title]="category.name"
+            [collapsed]="true"
+        >
+            <a-asl-word-button
+                *ngFor="let word of category.words"
+                [word]="word"
+                (wordClicked)="wordSelected(word)"
+            ></a-asl-word-button>
+        </a-collapsable>
+    </ng-container>
+</div>

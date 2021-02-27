@@ -1,0 +1,12 @@
+<input
+    type="text"
+    [placeholder]="placeholder"
+    [ngModel]="value"
+    (ngModelChange)="onValueChange($event)"
+    (keyup.escape)="onEscapePress()"
+>
+
+<div class="icon">
+    <span class="material-icons-round">search</span>
+</div>
+

@@ -20,11 +20,11 @@
     user-select: none;
     cursor: pointer;
     display: flex;
-    background: #f8f7fd;
+    background: var(--color-gray-1);
     padding: 0 20px;
 
     &:hover {
-        background: #f4f2fc;
+        background: var(--color-gray-2);
 
         .collapse-header-chevron {
             opacity: 0.7;

@@ -5,6 +5,7 @@ import { UnityService } from '../../services/unity.service';
     selector: 'a-current-word-label',
     templateUrl: './current-word-label.component.html',
     styleUrls: ['./current-word-label.component.scss'],
+    preserveWhitespaces: false,
 })
 export class CurrentWordLabelComponent implements OnInit {
     currentWord$ = this.unityService.getCurrentWord$();

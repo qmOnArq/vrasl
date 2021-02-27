@@ -14,6 +14,7 @@ import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
 import { LoaderComponent } from './components/loader/loader.component';
 import { CollapsableComponent } from './components/collapsable/collapsable.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { InputSearchComponent } from './components/input-search/input-search.component';
 
 @NgModule({
     declarations: [
@@ -26,6 +27,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         CurrentWordLabelComponent,
         LoaderComponent,
         CollapsableComponent,
+        InputSearchComponent,
     ],
     imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, SnotifyModule, BrowserAnimationsModule],
     providers: [WordNamePipe, { provide: 'SnotifyToastConfig', useValue: ToastDefaults }, SnotifyService],

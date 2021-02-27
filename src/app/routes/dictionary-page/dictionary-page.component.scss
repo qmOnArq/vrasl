@@ -10,3 +10,26 @@ label {
     cursor: pointer;
     user-select: none;
 }
+
+.header {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    padding: 0 20px;
+    justify-content: space-between;
+
+    .input-wrapper {
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    div {
+        display: flex;
+    }
+}
+
+.content {
+    width: 100%;
+    height: calc(100% - 40px);
+    overflow: auto;
+}
