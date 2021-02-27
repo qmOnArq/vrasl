@@ -2,9 +2,16 @@
     <div class="title">
         <div>VR ASL</div>
     </div>
-    <div *ngFor="let item of navigationItems">
-        <a [routerLink]="item.path">
-            {{ item.name }}
+    <div class="navigation-items">
+        <a
+            *ngFor="let item of navigationItems"
+            class="navigation-item"
+            [class.active]="isPathActive(item.path)"
+            [routerLink]="item.path"
+        >
+            <span>
+                {{ item.name }}
+            </span>
         </a>
     </div>
 </nav>

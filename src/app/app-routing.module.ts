@@ -12,6 +12,18 @@ const routes: Routes = [
         path: 'dictionary',
         component: DictionaryPageComponent,
     },
+    {
+        path: 'spelling-quiz',
+        component: DictionaryPageComponent,
+    },
+    {
+        path: 'word-quiz',
+        component: DictionaryPageComponent,
+    },
+    {
+        path: 'settings',
+        component: DictionaryPageComponent,
+    },
 ];
 
 @NgModule({
