@@ -89,6 +89,14 @@ export class DictionaryPageComponent implements OnInit {
         this.filterWords();
     }
 
+    onCategoryCollapseChange(category: string, collapsed: boolean) {
+        this.userSettings.setExpandedCategory(category, !collapsed);
+    }
+
+    isCategoryCollapsed(category: string) {
+        return !this.userSettings.getExpandedCategories().includes(category);
+    }
+
     private filterWordsList(words: AslWord[] | Readonly<AslWord[]>) {
         return words.filter(word => {
             const matchesFavorites = !this.favoritesOnly || this.userSettings.getFavorites().includes(word);

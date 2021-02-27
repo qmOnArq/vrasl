@@ -51,7 +51,8 @@
         <a-collapsable
             *ngFor="let category of (filteredCategories$ | async)"
             [title]="category.name"
-            [collapsed]="true"
+            [collapsed]="isCategoryCollapsed(category.name)"
+            (collapsedChange)="onCategoryCollapseChange(category.name, $event)"
         >
             <a-asl-word-button
                 *ngFor="let word of category.words"

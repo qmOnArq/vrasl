@@ -6,6 +6,7 @@ import * as _ from 'lodash';
 export class UserSettingsService {
     private favoriteWordsCache: AslWord[] | null = null;
     private quizWordsCache: AslWord[] | null = null;
+    private expandedCategoriesCache: string[] | null = null;
 
     setSpeed(speed: number) {
         window.localStorage.setItem('vrasl_speed', String(speed));
@@ -25,6 +26,36 @@ export class UserSettingsService {
     getArrowsToggle() {
         const enabled = window.localStorage.getItem('vrasl_arrows_toggle');
         return enabled === 'true';
+    }
+
+    setExpandedCategories(categories: string[]) {
+        this.expandedCategoriesCache = categories;
+        window.localStorage.setItem('vrasl_expanded_categories', JSON.stringify(categories));
+    }
+
+    setExpandedCategory(category: string, value: boolean | null) {
+        if (value == null) {
+            value = !this.getExpandedCategories().includes(category);
+        }
+
+        const newCategories = value
+            ? [category, ...this.getExpandedCategories()]
+            : this.getExpandedCategories().filter(w => w !== category);
+        this.setExpandedCategories(_.uniq(newCategories));
+    }
+
+    getExpandedCategories() {
+        if (!this.expandedCategoriesCache) {
+            const words = window.localStorage.getItem('vrasl_expanded_categories') ?? '[]';
+            try {
+                this.expandedCategoriesCache = JSON.parse(words);
+            } catch (e) {
+                this.expandedCategoriesCache = [];
+            }
+        }
+
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        return this.expandedCategoriesCache!;
     }
 
     setFavorites(words: AslWord[]) {
