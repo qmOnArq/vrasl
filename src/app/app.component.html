@@ -9,11 +9,18 @@
         src="assets/unity/index.html"
     ></iframe>
 
+    <a-current-word-label></a-current-word-label>
+
     <a-player-controls></a-player-controls>
 
-<!--    <div-->
-<!--        *ngIf="loading$ | async"-->
-<!--        class="loader"-->
-<!--    ></div>-->
+    <div
+        *ngIf="loading$ | async"
+        class="loader"
+    >
+        <div>
+            <a-loader></a-loader>
+        </div>
+    </div>
 </div>
 
+<ng-snotify></ng-snotify>

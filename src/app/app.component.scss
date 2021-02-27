@@ -32,7 +32,15 @@
             top: 0;
             bottom: 0;
             z-index: 1;
-            background: white;
+            background: black;
+            display: flex;
+            justify-content: center;
+
+            div {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
         }
     }
 }

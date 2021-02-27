@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { UnityService } from './services/unity.service';
 import { UnityInstance } from './types/base.types';
@@ -7,7 +7,6 @@ import { UnityInstance } from './types/base.types';
     selector: 'a-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
     preserveWhitespaces: false,
 })
 export class AppComponent implements OnInit {

@@ -9,6 +9,10 @@ const routes: Routes = [
         redirectTo: 'dictionary',
     },
     {
+        path: 'dictionary/word/:word',
+        component: DictionaryPageComponent,
+    },
+    {
         path: 'dictionary',
         component: DictionaryPageComponent,
     },

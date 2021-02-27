@@ -215,7 +215,7 @@ export const AslWordsCategories: Readonly<CategoryDefinition[]> = [
             'ASL-Pity',
             'ASL-Envy',
             'ASL-Hungry',
-            // TODO Alive
+            // MISSING WORD Alive
             'ASL-Bored',
             'ASL-Cry',
             'ASL-Happy',
@@ -382,7 +382,7 @@ export const AslWordsCategories: Readonly<CategoryDefinition[]> = [
         name: 'Alphabet / Numbers (Fingerspelling)',
         words: [
             'ASL-Spell',
-            // TODO Spell / Fingerspell (v2) - OCULUS
+            // MISSING WORD Spell / Fingerspell (v2) - OCULUS
             'ASL-A',
             'ASL-GT4tube-B-Index',
             'ASL-GT4tube-B-Gen',
@@ -390,20 +390,20 @@ export const AslWordsCategories: Readonly<CategoryDefinition[]> = [
             'ASL-D',
             'ASL-E',
             'ASL-F',
-            // TODO F (v2) - OCULUS
+            // MISSING WORD F (v2) - OCULUS
             'ASL-G',
             'ASL-H',
             'ASL-I_0',
-            // TODO I (v2) - OCULUS
+            // MISSING WORD I (v2) - OCULUS
             'ASL-J',
-            // TODO J (v2) - OCULUS
+            // MISSING WORD J (v2) - OCULUS
             'ASL-K',
-            // TODO K (v2)
+            // MISSING WORD K (v2)
             'ASL-L',
             'ASL-M',
-            // TODO M (v2)
+            // MISSING WORD M (v2)
             'ASL-N',
-            // TODO N (v2)
+            // MISSING WORD N (v2)
             'ASL-O',
             'ASL-P',
             'ASL-Q',
@@ -411,15 +411,15 @@ export const AslWordsCategories: Readonly<CategoryDefinition[]> = [
             'ASL-S',
             'ASL-T',
             'ASL-U',
-            // TODO U (v2) - OCULUS
+            // MISSING WORD U (v2) - OCULUS
             'ASL-V',
-            // TODO V (v2) - OCULUS
+            // MISSING WORD V (v2) - OCULUS
             'ASL-W',
             'ASL-GT4tube-W-Gen',
             'ASL-X',
-            // TODO X (v2)
+            // MISSING WORD X (v2)
             'ASL-Y',
-            // TODO Y (v2) - OCULUS
+            // MISSING WORD Y (v2) - OCULUS
             'ASL-Z',
             'ASL-Comma',
             'ASL-Space',
@@ -450,7 +450,7 @@ export const AslWordsCategories: Readonly<CategoryDefinition[]> = [
             'ASL-Erase',
             'ASL-Write',
             'ASL-Proposal',
-            // TODO Add - RED
+            // MISSING WORD Add - RED
             'ASL-Increase',
             'ASL-Remove',
             'ASL-Agree',
@@ -1121,7 +1121,7 @@ export const AslWordsCategories: Readonly<CategoryDefinition[]> = [
             'ASL-Broom',
             'ASL-Sweeper',
             'ASL-Dishwasher',
-            // TODO Cooking Pan - RED
+            // MISSING WORD Cooking Pan - RED
             'ASL-Oven',
             'ASL-Fork',
             'ASL-Knife',

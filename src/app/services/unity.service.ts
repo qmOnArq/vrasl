@@ -1,13 +1,18 @@
 import { Injectable } from '@angular/core';
 import { UnityInstance } from '../types/base.types';
 import { UserSettingsService } from './user-settings.service';
+import { BehaviorSubject } from 'rxjs';
+import { AslWord } from '../definitions/asl-words';
+import { Deferred } from './deferred';
 
 @Injectable({ providedIn: 'root' })
 export class UnityService {
     private readonly gameObjectName = 'Communicator';
+    private readonly loadedPromise = new Deferred<void>();
 
     private unity?: UnityInstance;
     private paused = false;
+    private currentWord$ = new BehaviorSubject<AslWord | null>(null);
 
     constructor(private userSettingsService: UserSettingsService) {}
 
@@ -17,6 +22,11 @@ export class UnityService {
 
         this.setSpeed(this.userSettingsService.getSpeed());
         this.toggleArrows(this.userSettingsService.getArrowsToggle());
+        this.loadedPromise.resolve();
+    }
+
+    loaded() {
+        return this.loadedPromise.promise;
     }
 
     isPaused() {
@@ -36,6 +46,7 @@ export class UnityService {
             throw new Error('Unity not initialized');
         }
 
+        this.currentWord$.next(null);
         this.unity.SendMessage(this.gameObjectName, 'Stop');
     }
 
@@ -73,11 +84,16 @@ export class UnityService {
         this.unity.SendMessage(this.gameObjectName, 'ToggleArrows', String(visible));
     }
 
-    selectClip(name: string) {
+    selectClip(name: AslWord) {
         if (!this.unity) {
             throw new Error('Unity not initialized');
         }
 
+        this.currentWord$.next(name);
         this.unity.SendMessage(this.gameObjectName, 'SelectClip', name);
+    }
+
+    getCurrentWord$() {
+        return this.currentWord$;
     }
 }

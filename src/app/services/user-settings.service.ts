@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AslWord } from '../definitions/asl-words';
+import * as _ from 'lodash';
 
 @Injectable({ providedIn: 'root' })
 export class UserSettingsService {
@@ -27,7 +28,17 @@ export class UserSettingsService {
     }
 
     setFavorites(words: AslWord[]) {
+        this.favoriteWordsCache = words;
         window.localStorage.setItem('vrasl_favorites_words', JSON.stringify(words));
+    }
+
+    setFavoriteWord(word: AslWord, value: boolean | null) {
+        if (value == null) {
+            value = !this.getFavorites().includes(word);
+        }
+
+        const newFavorites = value ? [word, ...this.getFavorites()] : this.getFavorites().filter(w => w !== word);
+        this.setFavorites(_.uniq(newFavorites));
     }
 
     getFavorites() {
@@ -40,11 +51,22 @@ export class UserSettingsService {
             }
         }
 
-        return this.favoriteWordsCache;
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        return this.favoriteWordsCache!;
     }
 
     setQuizWords(words: AslWord[]) {
+        this.quizWordsCache = words;
         window.localStorage.setItem('vrasl_quiz_words', JSON.stringify(words));
+    }
+
+    setQuizWord(word: AslWord, value: boolean | null) {
+        if (value == null) {
+            value = !this.getQuizWords().includes(word);
+        }
+
+        const newQuizWords = value ? [word, ...this.getQuizWords()] : this.getQuizWords().filter(w => w !== word);
+        this.setQuizWords(_.uniq(newQuizWords));
     }
 
     getQuizWords() {
@@ -57,7 +79,8 @@ export class UserSettingsService {
             }
         }
 
-        return this.quizWordsCache;
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        return this.quizWordsCache!;
     }
 
     setShowOnlyFavorites(show: boolean) {

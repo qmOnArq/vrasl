@@ -25,7 +25,10 @@
     </label>
 </div>
 
-<a-asl-word-button
-    *ngFor="let word of words"
-    [word]="word"
-></a-asl-word-button>
+<ng-container *ngIf="!categoriesMode">
+    <a-asl-word-button
+        *ngFor="let word of (filteredWords$ | async)"
+        [word]="word"
+        (wordClicked)="wordSelected(word)"
+    ></a-asl-word-button>
+</ng-container>

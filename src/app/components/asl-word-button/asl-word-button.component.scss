@@ -1,3 +1,63 @@
+@import '../../../variables';
+
+:host {
+    display: flex;
+    width: 100%;
+    height: 40px;
+    border-bottom: 1px solid red;
+    background: #eee;
+
+    &:hover {
+        .share-button,
+        .quiz-button,
+        .favorite-button {
+            span {
+                opacity: 1;
+            }
+        }
+    }
+}
+
 button {
     text-transform: capitalize;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background: transparent;
+}
+
+.word-button {
+    flex: 1;
+    text-align: left;
+    font-size: 14px;
+    font-weight: bold;
+
+    &.hidden-word {
+        opacity: 0.5;
+    }
+
+    &.red-word {
+        color: $sass-lipstick;
+    }
+}
+
+.share-button,
+.quiz-button,
+.favorite-button {
+    color: var(--color-1);
+    opacity: 0.7;
+
+    &:hover {
+        opacity: 1;
+    }
+
+    span {
+        opacity: 0;
+    }
+
+    &.active {
+        span {
+            opacity: 1;
+        }
+    }
 }

@@ -1,52 +1,5 @@
-$sass-gold:                                             rgb(255, 213,   0);     // #FFD500
-$sass-turquoise:                                        rgb( 25, 186, 238);     // #19BAEE a.k.a in designs #2DBAEE
-$sass-night:                                            rgb( 28,  23,  51);     // #1C1733
-$sass-kimberly:                                         rgb( 99, 102, 150);     // #636696
-$sass-mist:                                             rgb(237, 238, 247);     // #EDEEF7 => BG.PRIM
-
-// Secondary color definitions
-// ---------------------------------------------------------------------------------------------
-$sass-lavender:                                         rgb(136, 115, 255);     // #8873FF
-$sass-barbie:                                           rgb(248,  76, 172);     // #F84CAC
-$sass-caribic:                                          rgb(  0, 197, 134);     // #00C586
-$sass-sunrise:                                          rgb(255, 106,  77);     // #FF6A4D
-$sass-orange-peel:                                      rgb(255, 162,   0);     // #F4A204
-$sass-azure:                                            rgb(  0, 153, 255);     // #0099FF
-$sass-grass:                                            rgb(150, 217,  43);     // #96D92B
-$sass-lipstick:                                         rgb(242,  65, 101);     // #F24165
-$sass-heliotrope:                                       rgb(194,  76, 252);     // #C24CFC
-$sass-purple-rain:                                      rgb(109,  45, 237);     // #6D2DED
-$sass-kimberly-medium:                                  rgb(116, 119, 176);     // #7477b0
-$sass-kimberly-lite:                                    rgb(151, 153, 196);     // #9799C4 => ICON
-$sass-dust:                                             rgb(216, 221, 239);     // #D8DDEF => BORDER
-$sass-milk:                                             rgb(250, 250, 253);     // #FAFAFD => BUTTON
-$sass-steam:                                            rgb(248, 247, 253);     // #F8F7FD => BG.SEC
-$sass-white:                                            rgb(255, 255, 255);     // #FFFFFF
-$sass-frangipani:                                       rgb(255, 224, 178);     // #FFE0B2
-
-// Out of showcase
-// ---------------------------------------------------------------------------------------------
-// Tool for generating semantic color names http://chir.ag/projects/name-that-color/
-// ---------------------------------------------------------------------------------------------
-$sass-green:                                            $sass-caribic;     // #00c586  // used in error message
-$sass-gold-dark:                                        $sass-orange-peel;     // #FFA200
-$sass-red:                                              rgb(255,  30,  60);     // #FF1E3C
-$sass-very-light-blue:                                  rgb(234, 248, 253);     // #EAF8FD  // not used now (was in active item/table row)
-$sass-jumbo-grey:                                       #737180;
-$sass-mischka-light-grey:                               #dbdde9;
-$sass-mischka-dark-grey:                                #cdcfdc;
-$sass-athens-grey:                                      #e7e7ef;
-$sass-white-lical:                                      #fcfcfe;
-$sass-white-lical-dark:                                 #eeeef8;
-$sass-chambray-blue:                                    #3B5998;
-$sass-punch-red:                                        #dd4b39;
-$sass-deep-cerulean-blue:                               #0077B5;
-$sass-martinique-purple:                                #2e364d;
-$sass-blue-haze:                                        #CACFE2;
-$sass-cornflower-blue:                                  #4285F4;
-$sass-mariner:                                          #3367D6;
-$sass-white-lical-light:                                #FAFAFD;
-$sass-olive:                                            #806a00; // used in project selector hovered item
+@import "~ng-snotify/styles/material";
+@import 'variables';
 
 * {
     box-sizing: border-box;
@@ -57,6 +10,11 @@ body, html {
     padding: 0;
     margin: 0;
     background: var(--color-3);
+    color: var(--color-1);
+}
+
+button {
+    color: var(--color-1);
 }
 
 :root {

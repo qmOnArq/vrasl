@@ -4,7 +4,7 @@ import { AslWordsDefinitions } from '../definitions/asl-words-definitions';
 
 @Pipe({ name: 'wordName', pure: true })
 export class WordNamePipe implements PipeTransform {
-    transform(word?: AslWord) {
+    transform(word: AslWord | null | undefined) {
         if (!word) {
             return '';
         }

@@ -1,15 +1,41 @@
-<div>
-    <button
-        (click)="onWordClicked()"
-    >
-        {{ word | wordName }}
-    </button>
+<button
+    (click)="onWordClicked()"
+    class="word-button"
+    [class.hidden-word]="definition.hidden"
+    [class.red-word]="definition.red"
+>
+    {{ word | wordName }}
+</button>
 
-    <button
-        (click)="onWordQuizzed()"
-    ></button>
+<button
+    (click)="onShareClick()"
+    class="share-button"
+    title="Get URL for Word"
+>
+    <span
+        class="material-icons-outlined"
+    >share</span>
+</button>
 
-    <button
-        (click)="onWordFavorited()"
-    ></button>
-</div>
+<button
+    (click)="onWordQuizzed()"
+    [title]="isWordQuizzed() ? 'Remove from Quiz' : 'Add to Quiz'"
+    [class.active]="isWordQuizzed()"
+    class="quiz-button"
+>
+    <span
+        [class.material-icons-round]="isWordQuizzed()"
+        [class.material-icons-outlined]="!isWordQuizzed()"
+    >quiz</span>
+</button>
+
+<button
+    (click)="onWordFavorited()"
+    [title]="isWordFavorited() ? 'Remove from Favorites' : 'Favorite'"
+    [class.active]="isWordFavorited()"
+    class="favorite-button"
+>
+    <span
+        class="material-icons-round"
+    >{{ isWordFavorited() ? 'star' : 'star_border' }}</span>
+</button>
