@@ -1,0 +1,46 @@
+<button
+    *ngIf="!isPaused()"
+    (click)="pause()"
+    title="Pause"
+>
+    <span class="material-icons-round">pause_circle</span>
+</button>
+
+<button
+    *ngIf="isPaused()"
+    (click)="play()"
+    title="Play"
+>
+    <span class="material-icons-round">play_circle</span>
+</button>
+
+<div class="speed-slider-container">
+    <input
+        [ngModel]="speed"
+        (ngModelChange)="setSpeed($event)"
+        type="range"
+        min="0"
+        max="2"
+        step="0.1"
+        value="1"
+        class="speed-slider"
+        title="Speed: {{ speed }}"
+    >
+</div>
+
+<button
+    (click)="toggleArrows()"
+    title="Toggle arrows"
+>
+    <span
+        [class.material-icons-round]="arrowsVisible"
+        [class.material-icons-outlined]="!arrowsVisible"
+    >swap_vertical_circle</span>
+</button>
+
+<button
+    (click)="resetCamera()"
+    title="Reset camera"
+>
+    <span class="material-icons-round">party_mode</span>
+</button>

@@ -6,9 +6,11 @@ import { DictionaryPageComponent } from './routes/dictionary-page/dictionary-pag
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { WordNamePipe } from './pipes/word-name.pipe';
+import { PlayerControlsComponent } from './components/player-controls/player-controls.component';
+import { NavigationComponent } from './components/navigation/navigation.component';
 
 @NgModule({
-    declarations: [AppComponent, DictionaryPageComponent, WordNamePipe],
+    declarations: [AppComponent, DictionaryPageComponent, WordNamePipe, PlayerControlsComponent, NavigationComponent],
     imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
     providers: [WordNamePipe],
     bootstrap: [AppComponent],

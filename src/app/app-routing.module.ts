@@ -5,12 +5,17 @@ import { DictionaryPageComponent } from './routes/dictionary-page/dictionary-pag
 const routes: Routes = [
     {
         path: '',
+        pathMatch: 'full',
+        redirectTo: 'dictionary',
+    },
+    {
+        path: 'dictionary',
         component: DictionaryPageComponent,
     },
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes)],
+    imports: [RouterModule.forRoot(routes, { useHash: true })],
     exports: [RouterModule],
 })
 export class AppRoutingModule {}

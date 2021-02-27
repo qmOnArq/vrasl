@@ -1,0 +1,8 @@
+<nav>
+    <div class="title">VR ASL</div>
+    <div *ngFor="let item of navigationItems">
+        <a [routerLink]="item.path">
+            {{ item.name }}
+        </a>
+    </div>
+</nav>

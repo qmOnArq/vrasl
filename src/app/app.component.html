@@ -1,4 +1,5 @@
 <div class="main">
+    <a-navigation></a-navigation>
     <router-outlet></router-outlet>
 </div>
 
@@ -8,9 +9,11 @@
         src="assets/unity/index.html"
     ></iframe>
 
-    <div
-        *ngIf="loading$ | async"
-        class="loader"
-    ></div>
+    <a-player-controls></a-player-controls>
+
+<!--    <div-->
+<!--        *ngIf="loading$ | async"-->
+<!--        class="loader"-->
+<!--    ></div>-->
 </div>
 

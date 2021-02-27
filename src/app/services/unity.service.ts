@@ -1,14 +1,26 @@
 import { Injectable } from '@angular/core';
 import { UnityInstance } from '../types/base.types';
+import { UserSettingsService } from './user-settings.service';
 
 @Injectable({ providedIn: 'root' })
 export class UnityService {
     private readonly gameObjectName = 'Communicator';
 
     private unity?: UnityInstance;
+    private paused = false;
+
+    constructor(private userSettingsService: UserSettingsService) {}
 
     initialize(unity: UnityInstance) {
         this.unity = unity;
+        this.paused = false;
+
+        this.setSpeed(this.userSettingsService.getSpeed());
+        this.toggleArrows(this.userSettingsService.getArrowsToggle());
+    }
+
+    isPaused() {
+        return this.paused;
     }
 
     resetCamera() {
@@ -16,7 +28,7 @@ export class UnityService {
             throw new Error('Unity not initialized');
         }
 
-        this.unity.SendMessage(this.gameObjectName, 'SelectClip');
+        this.unity.SendMessage(this.gameObjectName, 'ResetCamera');
     }
 
     stop() {
@@ -32,8 +44,8 @@ export class UnityService {
             throw new Error('Unity not initialized');
         }
 
-
         this.unity.SendMessage(this.gameObjectName, 'Play');
+        this.paused = false;
     }
 
     pause() {
@@ -42,6 +54,7 @@ export class UnityService {
         }
 
         this.unity.SendMessage(this.gameObjectName, 'Pause');
+        this.paused = true;
     }
 
     setSpeed(speed: number) {
@@ -57,7 +70,7 @@ export class UnityService {
             throw new Error('Unity not initialized');
         }
 
-        this.unity.SendMessage(this.gameObjectName, 'ToggleArrows', visible);
+        this.unity.SendMessage(this.gameObjectName, 'ToggleArrows', String(visible));
     }
 
     selectClip(name: string) {
