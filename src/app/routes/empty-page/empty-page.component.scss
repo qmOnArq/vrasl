@@ -3,6 +3,7 @@
     height: calc(100% - var(--navigation-height));
     text-align: center;
     padding: 100px;
+    user-select: none;
 }
 
 .sadge {

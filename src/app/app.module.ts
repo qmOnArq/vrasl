@@ -19,6 +19,7 @@ import { EmptyPageComponent } from './routes/empty-page/empty-page.component';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { SpellingQuizPageComponent } from './routes/spelling-quiz-page/spelling-quiz-page.component';
 import { SettingsPageComponent } from './routes/settings-page/settings-page.component';
+import { WordQuizPageComponent } from './routes/word-quiz-page/word-quiz-page.component';
 
 @NgModule({
     declarations: [
@@ -35,6 +36,7 @@ import { SettingsPageComponent } from './routes/settings-page/settings-page.comp
         EmptyPageComponent,
         SpellingQuizPageComponent,
         SettingsPageComponent,
+        WordQuizPageComponent,
     ],
     imports: [
         BrowserModule,

@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DictionaryPageComponent } from './routes/dictionary-page/dictionary-page.component';
-import { EmptyPageComponent } from './routes/empty-page/empty-page.component';
 import { SpellingQuizPageComponent } from './routes/spelling-quiz-page/spelling-quiz-page.component';
 import { SettingsPageComponent } from './routes/settings-page/settings-page.component';
+import { WordQuizPageComponent } from './routes/word-quiz-page/word-quiz-page.component';
+import { EmptyPageComponent } from './routes/empty-page/empty-page.component';
 
 const routes: Routes = [
     {
@@ -25,11 +26,15 @@ const routes: Routes = [
     },
     {
         path: 'word-quiz',
-        component: EmptyPageComponent,
+        component: WordQuizPageComponent,
     },
     {
         path: 'settings',
         component: SettingsPageComponent,
+    },
+    {
+        path: '**',
+        component: EmptyPageComponent,
     },
 ];
 

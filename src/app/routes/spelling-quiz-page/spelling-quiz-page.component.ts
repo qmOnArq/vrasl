@@ -128,7 +128,7 @@ export class SpellingQuizPageComponent implements OnInit, OnDestroy {
                 this.userSettingsService.setSpellingQuizScore(this.lifetimeScore);
                 this.trackingService.track('spelling-quiz-submit', { word: this.currentWord, score: 'wrong' });
             } else {
-                this.snotifyService.error(`${this.tries} ${this.tries > 1 ? 'tries' : 'try'} left`, 'Wrong!', {
+                this.snotifyService.error(`${this.tries} ${this.tries !== 1 ? 'tries' : 'try'} left`, 'Wrong!', {
                     position: SnotifyPosition.centerTop,
                     timeout: 2000,
                 });

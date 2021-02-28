@@ -38,3 +38,41 @@ export function toBoolean(val: unknown) {
 export function uniq<T>(array: T[] | Readonly<T[]>) {
     return array.filter((value, index, self) => self.indexOf(value) === index);
 }
+
+// eslint-disable-next-line prefer-arrow/prefer-arrow-functions
+export function getRandom<T>(arr: T[], n: number): T[] {
+    const result = new Array(n);
+    let len = arr.length;
+    const taken = new Array(len);
+    if (n > len) {
+        throw new RangeError('getRandom: more elements taken than available');
+    }
+    while (n--) {
+        const x = Math.floor(Math.random() * len);
+        result[n] = arr[x in taken ? taken[x] : x];
+        taken[x] = --len in taken ? taken[len] : len;
+    }
+    return result;
+}
+
+// eslint-disable-next-line prefer-arrow/prefer-arrow-functions
+export function shuffle<T>(array: T[]): T[] {
+    array = [...array];
+    let currentIndex = array.length;
+    let temporaryValue: T;
+    let randomIndex: number;
+
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+        // Pick a remaining element...
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+
+        // And swap it with the current element.
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+    }
+
+    return array;
+}

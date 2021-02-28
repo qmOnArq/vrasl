@@ -1,0 +1,123 @@
+<div
+    *ngIf="state === QuizStateEnum.categorySelect"
+    class="categories-selection"
+>
+    <span class="title">Select categories:</span>
+    <div>
+        <button
+            class="category-button btn tertiary"
+            [class.active]="quizWordsEnabled"
+            (click)="toggleQuizWords()"
+        >
+            Your quiz words
+            <span>
+                ({{ userSettingsService.getQuizWords().length }}
+                word{{ userSettingsService.getQuizWords().length !== 1 ? 's' : '' }})
+            </span>
+        </button>
+        <button
+            class="category-button btn tertiary"
+            [class.active]="favoritesEnabled"
+            (click)="toggleFavorites()"
+        >Your favorite words
+            <span>
+                ({{ userSettingsService.getFavorites().length }}
+                word{{ userSettingsService.getFavorites().length !== 1 ? 's' : '' }})
+            </span>
+        </button>
+        <hr>
+        <button
+            *ngFor="let category of allCategories"
+            class="category-button btn tertiary"
+            (click)="toggleCategory(category.name)"
+            [class.active]="categoriesEnabled.includes(category.name)"
+        >
+            {{ category.name }}
+            <span>
+                ({{ category.words.length }}
+                word{{ category.words.length !== 1 ? 's' : '' }})
+            </span>
+        </button>
+    </div>
+    <button
+        class="btn"
+        (click)="startQuiz()"
+    >
+        Start
+        <span>
+            ({{ allQuizWords.length }}
+        word{{ allQuizWords.length !== 1 ? 's' : '' }})
+        </span>
+    </button>
+</div>
+
+<div
+    *ngIf="state === QuizStateEnum.started"
+    class="quiz-holder"
+>
+    <span class="title">Word {{ allQuizWords.length - remainingQuizWords.length }} / {{ allQuizWords.length }}</span>
+    <span class="title-score">
+        <span class="score-part"><span class="correct-number">Correct: </span>{{ correctWords }}</span>
+        <span class="score-part"><span class="wrong-number">Wrong: </span>{{ wrongWords }}</span>
+    </span>
+
+
+    <a-asl-word-button
+        *ngFor="let button of buttons"
+        [word]="button"
+        (wordClicked)="wordSelected(button)"
+        [class.wrong]="selectedWord === button && selectedWord !== currentWord"
+        [class.correct]="selectedWord && button === currentWord"
+    ></a-asl-word-button>
+
+    <button
+        class="btn"
+        [class.unusable]="!selectedWord"
+        (click)="prepareNextWord()"
+    >
+        Next
+    </button>
+
+    <button
+        class="btn secondary"
+        (click)="endQuiz(true)"
+    >
+        End quiz early
+    </button>
+</div>
+
+<div
+    *ngIf="state === QuizStateEnum.end"
+    class="result-holder"
+>
+    <span class="title">Results</span>
+    <span class="title">Finished words: {{ correctWords + wrongWords }} / {{ allQuizWords.length }}</span>
+    <span class="title-score">
+        <span class="score-part"><span class="correct-number">Correct: </span>{{ correctWords }}</span>
+        <span class="score-part"><span class="wrong-number">Wrong: </span>{{ wrongWords }}</span>
+    </span>
+
+    <button
+        class="btn secondary"
+        (click)="restartQuiz()"
+    >
+        Restart
+    </button>
+
+    <div *ngIf="wrongPicks.length > 0">
+        <span class="title">Your wrong answers:</span>
+        <div *ngFor="let pick of wrongPicks">
+            <a-asl-word-button
+                [word]="pick.real"
+                class="correct"
+                (click)="playWord(pick.real)"
+            ></a-asl-word-button>
+            <a-asl-word-button
+                [word]="pick.your"
+                class="wrong"
+                (click)="playWord(pick.your)"
+            ></a-asl-word-button>
+            <hr>
+        </div>
+    </div>
+</div>

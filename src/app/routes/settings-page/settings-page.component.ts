@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from "@angular/core";
 import { UserSettingsService } from '../../services/user-settings.service';
 import { TrackingService } from '../../services/tracking.service';
 import { SnotifyPosition, SnotifyService } from 'ng-snotify';
@@ -18,6 +18,7 @@ export class SettingsPageComponent implements OnInit {
         private userSettingsService: UserSettingsService,
         private trackingService: TrackingService,
         private snotifyService: SnotifyService,
+        private cd: ChangeDetectorRef,
     ) {}
 
     ngOnInit(): void {}
@@ -30,12 +31,14 @@ export class SettingsPageComponent implements OnInit {
     resetFavorites() {
         this.resetConfirm('Resetting favorites cannot be undone.').then(() => {
             this.userSettingsService.setFavorites([]);
+            this.cd.markForCheck();
         });
     }
 
     resetQuizWords() {
         this.resetConfirm('Resetting quiz words cannot be undone.').then(() => {
             this.userSettingsService.setQuizWords([]);
+            this.cd.markForCheck();
         });
     }
 
@@ -46,6 +49,7 @@ export class SettingsPageComponent implements OnInit {
                 wrong: 0,
                 perfect: 0,
             });
+            this.cd.markForCheck();
         });
     }
 

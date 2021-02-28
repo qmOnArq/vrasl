@@ -110,6 +110,7 @@ button.btn {
     border-radius: 4px;
     outline: none;
     cursor: pointer;
+    user-select: none;
 
     &:hover {
         background: var(--color-5);
@@ -130,6 +131,34 @@ button.btn {
 
         &:active {
             background: var(--color-7);
+        }
+    }
+
+    &.tertiary {
+        color: var(--color-1);
+        background: var(--color-3);
+        border: 2px solid var(--color-3);
+
+        &:hover {
+            background: var(--color-6);
+        }
+
+        &:active {
+            background: var(--color-7);
+        }
+
+        &.active {
+            color: white;
+            background: var(--color-8);
+            border: 2px solid var(--color-8);
+
+            &:hover {
+                background: var(--color-6);
+            }
+
+            &:active {
+                background: var(--color-7);
+            }
         }
     }
 }

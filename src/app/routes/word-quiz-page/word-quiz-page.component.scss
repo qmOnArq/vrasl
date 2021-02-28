@@ -1,0 +1,89 @@
+@import '../../../variables';
+
+:host {
+    display: block;
+    position: relative;
+    overflow: auto;
+    height: calc(100% - var(--navigation-height));
+    width: 100%;
+    user-select: none;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid var(--color-gray-2);
+}
+
+.categories-selection {
+    text-align: center;
+    padding: 20px;
+
+    .title {
+        display: block;
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    .category-button {
+        display: inline-block;
+        margin: 5px;
+        width: 40%;
+        max-width: 290px;
+        font-size: 14px;
+        padding: 10px 0;
+
+        span {
+            display: block;
+            font-size: 10px;
+        }
+    }
+}
+
+.quiz-holder, .result-holder {
+    padding: 20px;
+    text-align: center;
+
+    .title {
+        display: block;
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    .title-score {
+        display: block;
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 20px;
+
+        .score-part {
+            margin: 0 10px;
+        }
+
+        .correct-number {
+            color: $sass-grass;
+        }
+
+        .wrong-number {
+            color: $sass-lipstick;
+        }
+    }
+
+    .correct {
+        background: rgba($sass-grass, 0.2);
+    }
+
+    .wrong {
+        background: rgba($sass-lipstick, 0.2);
+    }
+
+    .btn {
+        display: block;
+
+        &.unusable {
+            opacity: 0;
+            pointer-events: none;
+        }
+    }
+}
