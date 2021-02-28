@@ -2,12 +2,22 @@ import { Injectable } from '@angular/core';
 import { AslWord } from '../definitions/asl-words';
 import { uniq } from './helpers';
 import { SpellingQuizScore } from '../types/base.types';
+import { Observable, Subject } from 'rxjs';
+import { TrackingService } from './tracking.service';
 
 @Injectable({ providedIn: 'root' })
 export class UserSettingsService {
+    reverseLayoutUpdated$: Observable<void>;
+
     private favoriteWordsCache: AslWord[] | null = null;
     private quizWordsCache: AslWord[] | null = null;
     private expandedCategoriesCache: string[] | null = null;
+
+    private reverseLayoutUpdatedSubject = new Subject<void>();
+
+    constructor(private trackingService: TrackingService) {
+        this.reverseLayoutUpdated$ = this.reverseLayoutUpdatedSubject.asObservable();
+    }
 
     getSpellQuizSpeed() {
         return 1.5;
@@ -25,6 +35,17 @@ export class UserSettingsService {
                 fine: 0,
             }
         );
+    }
+
+    setReverseLayout(enabled: boolean) {
+        window.localStorage.setItem('vrasl_reverse_layout', String(enabled));
+        this.reverseLayoutUpdatedSubject.next();
+        this.trackingService.track('setting-change', { setting: 'reverse-layout', value: enabled });
+    }
+
+    getReverseLayout() {
+        const enabled = window.localStorage.getItem('vrasl_reverse_layout');
+        return enabled === 'true';
     }
 
     setSpeed(speed: number) {

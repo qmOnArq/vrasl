@@ -1,0 +1,15 @@
+:host {
+    display: block;
+    padding: 40px;
+    width: 100%;
+    height: calc(100% - var(--navigation-height));
+}
+
+label {
+    cursor: pointer;
+}
+
+button {
+    display: block;
+    margin: 20px 0;
+}

@@ -18,6 +18,7 @@ import { InputSearchComponent } from './components/input-search/input-search.com
 import { EmptyPageComponent } from './routes/empty-page/empty-page.component';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { SpellingQuizPageComponent } from './routes/spelling-quiz-page/spelling-quiz-page.component';
+import { SettingsPageComponent } from './routes/settings-page/settings-page.component';
 
 @NgModule({
     declarations: [
@@ -33,6 +34,7 @@ import { SpellingQuizPageComponent } from './routes/spelling-quiz-page/spelling-
         InputSearchComponent,
         EmptyPageComponent,
         SpellingQuizPageComponent,
+        SettingsPageComponent,
     ],
     imports: [
         BrowserModule,

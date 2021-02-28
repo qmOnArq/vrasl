@@ -33,7 +33,11 @@
     *ngIf="!currentWord"
     class="start-holder"
 >
-    <button (click)="getRandomWord()">Start the quiz!</button>
+    <button
+        class="btn"
+        (click)="getRandomWord()"
+    >Start the quiz!
+    </button>
 </div>
 
 <div
@@ -51,10 +55,14 @@
         />
     </label>
 
-    <button (click)="submitAnswer()">Submit</button>
+    <button
+        class="btn"
+        (click)="submitAnswer()"
+    >Submit
+    </button>
     <button
         (click)="restartWord()"
-        class="secondary"
+        class="secondary btn"
     >Replay word
     </button>
 </div>
@@ -65,10 +73,14 @@
 >
     <span class="word-was">The word was:</span>
     <span class="word">{{ currentWord }}</span>
-    <button (click)="getRandomWord()">Next word</button>
+    <button
+        class="btn"
+        (click)="getRandomWord()"
+    >Next word
+    </button>
     <button
         (click)="restartWord()"
-        class="secondary"
+        class="btn secondary"
     >Replay word
     </button>
 </div>

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { DictionaryPageComponent } from './routes/dictionary-page/dictionary-page.component';
 import { EmptyPageComponent } from './routes/empty-page/empty-page.component';
 import { SpellingQuizPageComponent } from './routes/spelling-quiz-page/spelling-quiz-page.component';
+import { SettingsPageComponent } from './routes/settings-page/settings-page.component';
 
 const routes: Routes = [
     {
@@ -28,7 +29,7 @@ const routes: Routes = [
     },
     {
         path: 'settings',
-        component: EmptyPageComponent,
+        component: SettingsPageComponent,
     },
 ];
 

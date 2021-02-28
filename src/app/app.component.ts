@@ -1,7 +1,8 @@
-import { ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, HostBinding, OnInit, ViewChild } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { UnityService } from './services/unity.service';
 import { UnityInstance } from './types/base.types';
+import { UserSettingsService } from './services/user-settings.service';
 
 @Component({
     selector: 'a-root',
@@ -14,7 +15,14 @@ export class AppComponent implements OnInit {
 
     loading$ = new BehaviorSubject(true);
 
-    constructor(private unityService: UnityService, private cd: ChangeDetectorRef) {}
+    @HostBinding('class.reverse')
+    private reverse = this.userSettingsService.getReverseLayout();
+
+    constructor(
+        private unityService: UnityService,
+        private cd: ChangeDetectorRef,
+        private userSettingsService: UserSettingsService,
+    ) {}
 
     ngOnInit() {
         (window as any).onUnityLoad = (unity: UnityInstance) => {
@@ -25,6 +33,10 @@ export class AppComponent implements OnInit {
         (window as any).onUnityLoadProgress = (progress: number) => {
             this.unityLoadProgress(progress);
         };
+
+        this.userSettingsService.reverseLayoutUpdated$.subscribe(() => {
+            this.reverse = this.userSettingsService.getReverseLayout();
+        });
     }
 
     private unityLoaded() {

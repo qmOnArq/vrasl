@@ -100,3 +100,36 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 cdk-virtual-scroll-viewport {
     height: 100%;
 }
+
+button.btn {
+    margin: 20px auto;
+    background: var(--color-4);
+    border: 2px solid var(--color-4);
+    padding: 10px 20px;
+    color: white;
+    border-radius: 4px;
+    outline: none;
+    cursor: pointer;
+
+    &:hover {
+        background: var(--color-5);
+    }
+
+    &:active {
+        background: var(--color-6);
+    }
+
+    &.secondary {
+        color: white;
+        background: var(--color-8);
+        border: 2px solid var(--color-8);
+
+        &:hover {
+            background: var(--color-6);
+        }
+
+        &:active {
+            background: var(--color-7);
+        }
+    }
+}

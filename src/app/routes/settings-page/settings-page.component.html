@@ -1,0 +1,33 @@
+<div>
+    <input
+        type="checkbox"
+        [ngModel]="reverseLayout"
+        (ngModelChange)="onReverseLayoutChange($event)"
+        id="settings-page-reverse-layout"
+    >
+    <label for="settings-page-reverse-layout">
+        <span></span>
+        Reverse layout
+    </label>
+</div>
+
+<button
+    (click)="resetFavorites()"
+    class="btn"
+>
+    Reset favorites
+</button>
+
+<button
+    (click)="resetQuizWords()"
+    class="btn"
+>
+    Reset quiz words
+</button>
+
+<button
+    (click)="resetSpellingScore()"
+    class="btn"
+>
+    Reset spelling quiz score
+</button>
