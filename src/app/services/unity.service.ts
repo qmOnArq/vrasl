@@ -34,43 +34,51 @@ export class UnityService {
         return this.paused;
     }
 
-    resetCamera() {
+    resetCamera(track = true) {
         if (!this.unity) {
             throw new Error('Unity not initialized');
         }
 
         this.unity.SendMessage(this.gameObjectName, 'ResetCamera');
-        this.trackingService.track('unity-action', { action: 'reset-camera' });
+        if (track) {
+            this.trackingService.track('unity-action', { action: 'reset-camera' });
+        }
     }
 
-    stop() {
+    stop(track = true) {
         if (!this.unity) {
             throw new Error('Unity not initialized');
         }
 
         this.currentWord$.next(null);
         this.unity.SendMessage(this.gameObjectName, 'Stop');
-        this.trackingService.track('unity-action', { action: 'stop' });
+        if (track) {
+            this.trackingService.track('unity-action', { action: 'stop' });
+        }
     }
 
-    play() {
+    play(track = true) {
         if (!this.unity) {
             throw new Error('Unity not initialized');
         }
 
         this.unity.SendMessage(this.gameObjectName, 'Play');
         this.paused = false;
-        this.trackingService.track('unity-action', { action: 'play' });
+        if (track) {
+            this.trackingService.track('unity-action', { action: 'play' });
+        }
     }
 
-    pause() {
+    pause(track = true) {
         if (!this.unity) {
             throw new Error('Unity not initialized');
         }
 
         this.unity.SendMessage(this.gameObjectName, 'Pause');
         this.paused = true;
-        this.trackingService.track('unity-action', { action: 'pause' });
+        if (track) {
+            this.trackingService.track('unity-action', { action: 'pause' });
+        }
     }
 
     setSpeed(speed: number, track = true) {
@@ -95,14 +103,16 @@ export class UnityService {
         }
     }
 
-    selectClip(name: AslWord) {
+    selectClip(name: AslWord, track = true) {
         if (!this.unity) {
             throw new Error('Unity not initialized');
         }
 
         this.currentWord$.next(name);
         this.unity.SendMessage(this.gameObjectName, 'SelectClip', name);
-        this.trackingService.track('unity-action', { action: 'select-clip', clip: name });
+        if (track) {
+            this.trackingService.track('unity-action', { action: 'select-clip', clip: name });
+        }
     }
 
     getCurrentWord$() {

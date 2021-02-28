@@ -1,1 +1,1 @@
-{{ currentWord$ | async | wordName }}
+<span *ngIf="!isQuizMode()">{{ currentWord$ | async | wordName }}</span>

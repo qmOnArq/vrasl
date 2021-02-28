@@ -1,0 +1,155 @@
+@import '../../../variables';
+
+:host {
+    display: block;
+    position: relative;
+    overflow: auto;
+    height: calc(100% - var(--navigation-height));
+    width: 100%
+}
+
+button {
+    user-select: none;
+    cursor: pointer;
+}
+
+.score {
+    margin-top: 20px;
+    text-align: center;
+
+    span {
+        font-size: 24px;
+        font-weight: bold;
+        user-select: none;
+    }
+
+    table {
+        margin: 20px auto;
+
+        th {
+            padding: 5px 20px;
+
+            &.session {
+                color: $sass-lavender;
+            }
+
+            &.lifetime {
+                color: $sass-lavender;
+            }
+
+            &.perfect {
+                color: $sass-grass;
+            }
+
+            &.fine {
+                color: $sass-orange-peel;
+            }
+
+            &.wrong {
+                color: $sass-lipstick;
+            }
+
+            &.total {
+                color: $sass-lavender;
+            }
+        }
+    }
+}
+
+button {
+    margin: 20px auto;
+    background: var(--color-4);
+    border: 2px solid var(--color-4);
+    padding: 10px 20px;
+    color: white;
+    border-radius: 4px;
+    outline: none;
+
+    &:hover {
+        background: var(--color-5);
+    }
+
+    &:active {
+        background: var(--color-6);
+    }
+
+    &.secondary {
+        color: white;
+        background: var(--color-8);
+        border: 2px solid var(--color-8);
+
+        &:hover {
+            background: var(--color-6);
+        }
+
+        &:active {
+            background: var(--color-7);
+        }
+    }
+}
+
+.start-holder {
+    text-align: center;
+}
+
+.wrong-holder {
+    text-align: center;
+
+    span {
+        display: block;
+        font-weight: bold;
+    }
+
+    .word-was {
+        padding-top: 20px;
+        font-size: 20px;
+    }
+
+    .word {
+        font-size: 30px;
+        padding: 30px;
+        color: $sass-lipstick;
+    }
+
+    button {
+        display: block;
+    }
+}
+
+.answer-holder {
+    text-align: center;
+    user-select: none;
+
+    button {
+        display: block;
+    }
+
+    label {
+        span {
+            padding-top: 20px;
+            display: block;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        input {
+            display: block;
+        }
+    }
+
+    input {
+        width: 50%;
+        height: 100%;
+        font-size: 14px;
+        padding: 6px 12px 6px 12px;
+        outline: none;
+        border: 1px solid var(--color-gray-3);
+        border-radius: 2px;
+        margin: 20px auto;
+
+        &:focus {
+            border-color: var(--color-7);
+            box-shadow: 0 0 0 1px var(--color-7);
+        }
+    }
+}

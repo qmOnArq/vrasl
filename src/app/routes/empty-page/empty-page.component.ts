@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { GlobalStateService } from '../../services/global-state.service';
 
 @Component({
     selector: 'a-empty-page',
@@ -8,7 +9,9 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
     preserveWhitespaces: false,
 })
 export class EmptyPageComponent implements OnInit {
-    constructor() {}
+    constructor(private globalStateService: GlobalStateService) {}
 
-    ngOnInit(): void {}
+    ngOnInit(): void {
+        this.globalStateService.setQuizMode(false);
+    }
 }

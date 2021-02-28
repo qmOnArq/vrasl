@@ -17,3 +17,9 @@ export interface CategoryDefinition {
     name: string;
     words: Readonly<AslWord[]>;
 }
+
+export interface SpellingQuizScore {
+    perfect: number;
+    fine: number;
+    wrong: number;
+}

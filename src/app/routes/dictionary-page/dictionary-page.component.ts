@@ -8,6 +8,7 @@ import { BehaviorSubject } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { CategoryDefinition } from '../../types/base.types';
 import { AslWordsCategories } from '../../definitions/asl-words-categories';
+import { GlobalStateService } from '../../services/global-state.service';
 
 @Component({
     selector: 'a-dictionary-page',
@@ -33,9 +34,12 @@ export class DictionaryPageComponent implements OnInit {
         private userSettings: UserSettingsService,
         private wordNamePipe: WordNamePipe,
         private route: ActivatedRoute,
+        private globalStateService: GlobalStateService,
     ) {}
 
     ngOnInit(): void {
+        this.globalStateService.setQuizMode(false);
+
         this.allWords = AslWords.filter(word => !AslWordsDefinitions[word].hidden).sort((a, b) => {
             const aName = this.wordNamePipe.transform(a).toLocaleLowerCase();
             const bName = this.wordNamePipe.transform(b).toLocaleLowerCase();
@@ -47,6 +51,7 @@ export class DictionaryPageComponent implements OnInit {
 
         this.preloadWord = this.route.snapshot.params?.word;
         this.unityService.loaded().then(() => {
+            this.unityService.setSpeed(this.userSettings.getSpeed());
             if (this.preloadWord) {
                 this.unityService.selectClip(this.preloadWord);
             }

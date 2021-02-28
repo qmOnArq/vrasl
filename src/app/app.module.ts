@@ -17,6 +17,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InputSearchComponent } from './components/input-search/input-search.component';
 import { EmptyPageComponent } from './routes/empty-page/empty-page.component';
 import { ScrollingModule } from '@angular/cdk/scrolling';
+import { SpellingQuizPageComponent } from './routes/spelling-quiz-page/spelling-quiz-page.component';
 
 @NgModule({
     declarations: [
@@ -31,6 +32,7 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
         CollapsableComponent,
         InputSearchComponent,
         EmptyPageComponent,
+        SpellingQuizPageComponent,
     ],
     imports: [
         BrowserModule,

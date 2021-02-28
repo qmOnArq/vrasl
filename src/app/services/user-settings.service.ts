@@ -1,12 +1,31 @@
 import { Injectable } from '@angular/core';
 import { AslWord } from '../definitions/asl-words';
 import { uniq } from './helpers';
+import { SpellingQuizScore } from '../types/base.types';
 
 @Injectable({ providedIn: 'root' })
 export class UserSettingsService {
     private favoriteWordsCache: AslWord[] | null = null;
     private quizWordsCache: AslWord[] | null = null;
     private expandedCategoriesCache: string[] | null = null;
+
+    getSpellQuizSpeed() {
+        return 1.5;
+    }
+
+    setSpellingQuizScore(score: SpellingQuizScore) {
+        window.localStorage.setItem('vrasl_spelling_score', JSON.stringify(score));
+    }
+
+    getSpellingQuizScore(): SpellingQuizScore {
+        return (
+            JSON.parse(window.localStorage.getItem('vrasl_spelling_score') ?? 'false') || {
+                perfect: 0,
+                wrong: 0,
+                fine: 0,
+            }
+        );
+    }
 
     setSpeed(speed: number) {
         window.localStorage.setItem('vrasl_speed', String(speed));

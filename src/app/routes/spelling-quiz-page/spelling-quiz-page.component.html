@@ -1,0 +1,74 @@
+<div class="score">
+    <span>Your score</span>
+    <table>
+        <thead>
+        <tr>
+            <th></th>
+            <th class="perfect">Perfect</th>
+            <th class="fine">Fine</th>
+            <th class="wrong">Wrong</th>
+            <th class="total">Total</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th class="session">Session</th>
+            <td class="perfect">{{ sessionScore.perfect }}</td>
+            <td class="fine">{{ sessionScore.fine }}</td>
+            <td class="wrong">{{ sessionScore.wrong }}</td>
+            <td class="total">{{ sessionScore.perfect + sessionScore.fine + sessionScore.wrong }}</td>
+        </tr>
+        <tr>
+            <th class="lifetime">Lifetime</th>
+            <td class="perfect">{{ lifetimeScore.perfect }}</td>
+            <td class="fine">{{ lifetimeScore.fine }}</td>
+            <td class="wrong">{{ lifetimeScore.wrong }}</td>
+            <td class="total">{{ lifetimeScore.perfect + lifetimeScore.fine + lifetimeScore.wrong }}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div
+    *ngIf="!currentWord"
+    class="start-holder"
+>
+    <button (click)="getRandomWord()">Start the quiz!</button>
+</div>
+
+<div
+    *ngIf="currentWord && tries > 0 && !waitingForWord"
+    class="answer-holder"
+>
+    <label>
+        <span>Your answer:</span>
+        <input
+            #input
+            type="text"
+            [(ngModel)]="yourGuess"
+            (keyup.enter)="submitAnswer()"
+            (keyup.escape)="yourGuess = ''"
+        />
+    </label>
+
+    <button (click)="submitAnswer()">Submit</button>
+    <button
+        (click)="restartWord()"
+        class="secondary"
+    >Replay word
+    </button>
+</div>
+
+<div
+    *ngIf="currentWord && tries === 0"
+    class="wrong-holder"
+>
+    <span class="word-was">The word was:</span>
+    <span class="word">{{ currentWord }}</span>
+    <button (click)="getRandomWord()">Next word</button>
+    <button
+        (click)="restartWord()"
+        class="secondary"
+    >Replay word
+    </button>
+</div>

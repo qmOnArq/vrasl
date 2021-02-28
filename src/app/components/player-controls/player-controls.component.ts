@@ -1,19 +1,23 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { UnityService } from '../../services/unity.service';
 import { UserSettingsService } from '../../services/user-settings.service';
+import { GlobalStateService } from '../../services/global-state.service';
 
 @Component({
     selector: 'a-player-controls',
     templateUrl: './player-controls.component.html',
     styleUrls: ['./player-controls.component.scss'],
     preserveWhitespaces: false,
-    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PlayerControlsComponent implements OnInit {
     arrowsVisible = this.userSettingsService.getArrowsToggle();
     speed = this.userSettingsService.getSpeed();
 
-    constructor(private unityService: UnityService, private userSettingsService: UserSettingsService) {}
+    constructor(
+        private unityService: UnityService,
+        private userSettingsService: UserSettingsService,
+        private globalStateService: GlobalStateService,
+    ) {}
 
     ngOnInit() {}
 
@@ -43,5 +47,9 @@ export class PlayerControlsComponent implements OnInit {
 
     resetCamera() {
         this.unityService.resetCamera();
+    }
+
+    isQuizMode() {
+        return this.globalStateService.getQuizMode();
     }
 }
