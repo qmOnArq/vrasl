@@ -4,6 +4,7 @@ import { UserSettingsService } from './user-settings.service';
 import { BehaviorSubject } from 'rxjs';
 import { AslWord } from '../definitions/asl-words';
 import { Deferred } from './deferred';
+import { TrackingService } from './tracking.service';
 
 @Injectable({ providedIn: 'root' })
 export class UnityService {
@@ -14,7 +15,7 @@ export class UnityService {
     private paused = false;
     private currentWord$ = new BehaviorSubject<AslWord | null>(null);
 
-    constructor(private userSettingsService: UserSettingsService) {}
+    constructor(private userSettingsService: UserSettingsService, private trackingService: TrackingService) {}
 
     initialize(unity: UnityInstance) {
         this.unity = unity;
@@ -39,7 +40,7 @@ export class UnityService {
         }
 
         this.unity.SendMessage(this.gameObjectName, 'ResetCamera');
-        (window as any).exponea.track('unity-action', { action: 'reset-camera' });
+        this.trackingService.track('unity-action', { action: 'reset-camera' });
     }
 
     stop() {
@@ -49,7 +50,7 @@ export class UnityService {
 
         this.currentWord$.next(null);
         this.unity.SendMessage(this.gameObjectName, 'Stop');
-        (window as any).exponea.track('unity-action', { action: 'stop' });
+        this.trackingService.track('unity-action', { action: 'stop' });
     }
 
     play() {
@@ -59,7 +60,7 @@ export class UnityService {
 
         this.unity.SendMessage(this.gameObjectName, 'Play');
         this.paused = false;
-        (window as any).exponea.track('unity-action', { action: 'play' });
+        this.trackingService.track('unity-action', { action: 'play' });
     }
 
     pause() {
@@ -69,7 +70,7 @@ export class UnityService {
 
         this.unity.SendMessage(this.gameObjectName, 'Pause');
         this.paused = true;
-        (window as any).exponea.track('unity-action', { action: 'pause' });
+        this.trackingService.track('unity-action', { action: 'pause' });
     }
 
     setSpeed(speed: number, track = true) {
@@ -79,7 +80,7 @@ export class UnityService {
 
         this.unity.SendMessage(this.gameObjectName, 'SetSpeed', speed);
         if (track) {
-            (window as any).exponea.track('unity-action', { action: 'set-speed', speed });
+            this.trackingService.track('unity-action', { action: 'set-speed', speed });
         }
     }
 
@@ -90,7 +91,7 @@ export class UnityService {
 
         this.unity.SendMessage(this.gameObjectName, 'ToggleArrows', String(visible));
         if (track) {
-            (window as any).exponea.track('unity-action', { action: 'toggle-arrows', visible });
+            this.trackingService.track('unity-action', { action: 'toggle-arrows', visible });
         }
     }
 
@@ -101,7 +102,7 @@ export class UnityService {
 
         this.currentWord$.next(name);
         this.unity.SendMessage(this.gameObjectName, 'SelectClip', name);
-        (window as any).exponea.track('unity-action', { action: 'select-clip', clip: name });
+        this.trackingService.track('unity-action', { action: 'select-clip', clip: name });
     }
 
     getCurrentWord$() {

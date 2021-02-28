@@ -20,7 +20,9 @@
     class="collapse-content"
     [@collapse]="collapsed"
 >
-    <div>
+    <div
+        *ngIf="contentVisible"
+    >
         <ng-content></ng-content>
     </div>
 </div>

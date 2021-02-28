@@ -39,6 +39,9 @@ export class NavigationComponent implements OnInit {
         if (!currentPath.startsWith('/')) {
             currentPath = `/${currentPath}`;
         }
+        if (currentPath === '/' && path === '/dictionary') {
+            return true;
+        }
         return currentPath.startsWith(path);
     }
 }
