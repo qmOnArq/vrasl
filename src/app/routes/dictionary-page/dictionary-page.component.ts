@@ -102,6 +102,16 @@ export class DictionaryPageComponent implements OnInit {
         return !this.userSettings.getExpandedCategories().includes(category);
     }
 
+    getItemSize() {
+        if (window.innerHeight > 900) {
+            return 40 / 3;
+        }
+        if (window.innerHeight > 600) {
+            return 40 / 2;
+        }
+        return 40;
+    }
+
     private filterWordsList(words: AslWord[] | Readonly<AslWord[]>) {
         return words.filter(word => {
             const matchesFavorites = !this.favoritesOnly || this.userSettings.getFavorites().includes(word);

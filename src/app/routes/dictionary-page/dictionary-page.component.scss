@@ -33,3 +33,17 @@ label {
     height: calc(100% - 40px);
     overflow: auto;
 }
+
+@media only screen and (min-height: 600px) {
+    a-asl-word-button {
+        width: 50%;
+        display: inline-flex;
+    }
+}
+
+@media only screen and (min-height: 900px) {
+    a-asl-word-button {
+        width: 33.33%;
+        display: inline-flex;
+    }
+}
