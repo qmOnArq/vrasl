@@ -38,12 +38,15 @@
         <a-collapsable
             [disabled]="true"
             [title]="'Words'"
+            [style.height.%]="100"
         >
-            <a-asl-word-button
-                *ngFor="let word of (filteredWords$ | async)"
-                [word]="word"
-                (wordClicked)="wordSelected(word)"
-            ></a-asl-word-button>
+            <cdk-virtual-scroll-viewport [itemSize]="40">
+                <a-asl-word-button
+                    *cdkVirtualFor="let word of (filteredWords$ | async)"
+                    [word]="word"
+                    (wordClicked)="wordSelected(word)"
+                ></a-asl-word-button>
+            </cdk-virtual-scroll-viewport>
         </a-collapsable>
     </ng-container>
 

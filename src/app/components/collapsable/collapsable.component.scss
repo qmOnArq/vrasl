@@ -64,4 +64,10 @@
 .collapse-content {
     transition: padding .3s;
     padding: 4px 0;
+    height: calc(100% - 30px);
+    position: relative;
+
+    > div {
+        height: 100%;
+    }
 }

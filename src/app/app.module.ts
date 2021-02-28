@@ -16,6 +16,7 @@ import { CollapsableComponent } from './components/collapsable/collapsable.compo
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InputSearchComponent } from './components/input-search/input-search.component';
 import { EmptyPageComponent } from './routes/empty-page/empty-page.component';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 @NgModule({
     declarations: [
@@ -31,7 +32,15 @@ import { EmptyPageComponent } from './routes/empty-page/empty-page.component';
         InputSearchComponent,
         EmptyPageComponent,
     ],
-    imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, SnotifyModule, BrowserAnimationsModule],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        FormsModule,
+        SnotifyModule,
+        BrowserAnimationsModule,
+        ScrollingModule,
+    ],
     providers: [WordNamePipe, { provide: 'SnotifyToastConfig', useValue: ToastDefaults }, SnotifyService],
     bootstrap: [AppComponent],
 })
