@@ -20,8 +20,8 @@ export class UnityService {
         this.unity = unity;
         this.paused = false;
 
-        this.setSpeed(this.userSettingsService.getSpeed());
-        this.toggleArrows(this.userSettingsService.getArrowsToggle());
+        this.setSpeed(this.userSettingsService.getSpeed(), false);
+        this.toggleArrows(this.userSettingsService.getArrowsToggle(), false);
         this.loadedPromise.resolve();
     }
 
@@ -39,6 +39,7 @@ export class UnityService {
         }
 
         this.unity.SendMessage(this.gameObjectName, 'ResetCamera');
+        (window as any).exponea.track('unity-action', { action: 'reset-camera' });
     }
 
     stop() {
@@ -48,6 +49,7 @@ export class UnityService {
 
         this.currentWord$.next(null);
         this.unity.SendMessage(this.gameObjectName, 'Stop');
+        (window as any).exponea.track('unity-action', { action: 'stop' });
     }
 
     play() {
@@ -57,6 +59,7 @@ export class UnityService {
 
         this.unity.SendMessage(this.gameObjectName, 'Play');
         this.paused = false;
+        (window as any).exponea.track('unity-action', { action: 'play' });
     }
 
     pause() {
@@ -66,22 +69,29 @@ export class UnityService {
 
         this.unity.SendMessage(this.gameObjectName, 'Pause');
         this.paused = true;
+        (window as any).exponea.track('unity-action', { action: 'pause' });
     }
 
-    setSpeed(speed: number) {
+    setSpeed(speed: number, track = true) {
         if (!this.unity) {
             throw new Error('Unity not initialized');
         }
 
         this.unity.SendMessage(this.gameObjectName, 'SetSpeed', speed);
+        if (track) {
+            (window as any).exponea.track('unity-action', { action: 'set-speed', speed });
+        }
     }
 
-    toggleArrows(visible: boolean) {
+    toggleArrows(visible: boolean, track = true) {
         if (!this.unity) {
             throw new Error('Unity not initialized');
         }
 
         this.unity.SendMessage(this.gameObjectName, 'ToggleArrows', String(visible));
+        if (track) {
+            (window as any).exponea.track('unity-action', { action: 'toggle-arrows', visible });
+        }
     }
 
     selectClip(name: AslWord) {
@@ -91,6 +101,7 @@ export class UnityService {
 
         this.currentWord$.next(name);
         this.unity.SendMessage(this.gameObjectName, 'SelectClip', name);
+        (window as any).exponea.track('unity-action', { action: 'select-clip', clip: name });
     }
 
     getCurrentWord$() {
