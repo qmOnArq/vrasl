@@ -38,6 +38,12 @@ export class DictionaryPageComponent implements OnInit {
     ) {}
 
     ngOnInit(): void {
+        this.preloadWord = this.route.snapshot.params?.word;
+        if (this.route.snapshot.params?.query) {
+            this.filterQuery = this.route.snapshot.params?.query;
+            this.userSettings.setLastFilter(this.filterQuery);
+        }
+
         this.globalStateService.setQuizMode(false);
 
         this.allWords = AslWords.filter(word => !AslWordsDefinitions[word].hidden).sort((a, b) => {
@@ -49,7 +55,6 @@ export class DictionaryPageComponent implements OnInit {
 
         this.filterWords();
 
-        this.preloadWord = this.route.snapshot.params?.word;
         this.unityService.loaded().then(() => {
             this.unityService.setSpeed(this.userSettings.getSpeed());
             if (this.preloadWord) {
@@ -80,6 +85,11 @@ export class DictionaryPageComponent implements OnInit {
     onFilterQueryChange(query: string) {
         this.filterQuery = query;
         this.userSettings.setLastFilter(query);
+        if (query === '') {
+            history.replaceState(undefined, '', '#/dictionary');
+        } else {
+            history.replaceState(undefined, '', '#/dictionary/query/' + query);
+        }
         this.filterWords();
     }
 
@@ -100,16 +110,6 @@ export class DictionaryPageComponent implements OnInit {
 
     isCategoryCollapsed(category: string) {
         return !this.userSettings.getExpandedCategories().includes(category);
-    }
-
-    getItemSize() {
-        if (window.innerHeight > 900) {
-            return 40 / 3;
-        }
-        if (window.innerHeight > 600) {
-            return 40 / 2;
-        }
-        return 40;
     }
 
     private filterWordsList(words: AslWord[] | Readonly<AslWord[]>) {

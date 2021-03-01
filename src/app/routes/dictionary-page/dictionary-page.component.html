@@ -39,10 +39,11 @@
             [disabled]="true"
             [title]="'Words'"
             [style.height.%]="100"
+            class="non-categories"
         >
-            <cdk-virtual-scroll-viewport [itemSize]="getItemSize()">
+            <cdk-virtual-scroll-viewport [itemSize]="40">
                 <a-asl-word-button
-                    *cdkVirtualFor="let word of (filteredWords$ | async)"
+                    *ngFor="let word of (filteredWords$ | async)"
                     [word]="word"
                     (wordClicked)="wordSelected(word)"
                 ></a-asl-word-button>

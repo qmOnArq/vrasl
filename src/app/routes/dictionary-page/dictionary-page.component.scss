@@ -34,6 +34,12 @@ label {
     overflow: auto;
 }
 
+.non-categories {
+    a-asl-word-button {
+        width: 100% !important;
+    }
+}
+
 @media only screen and (min-height: 600px) {
     a-asl-word-button {
         width: 50%;

@@ -17,6 +17,10 @@ const routes: Routes = [
         component: DictionaryPageComponent,
     },
     {
+        path: 'dictionary/query/:query',
+        component: DictionaryPageComponent,
+    },
+    {
         path: 'dictionary',
         component: DictionaryPageComponent,
     },
