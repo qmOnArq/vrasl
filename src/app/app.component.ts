@@ -3,6 +3,7 @@ import { BehaviorSubject } from 'rxjs';
 import { UnityService } from './services/unity.service';
 import { UnityInstance } from './types/base.types';
 import { UserSettingsService } from './services/user-settings.service';
+import { TrackingService } from "./services/tracking.service";
 
 @Component({
     selector: 'a-root',
@@ -22,6 +23,7 @@ export class AppComponent implements OnInit {
         private unityService: UnityService,
         private cd: ChangeDetectorRef,
         private userSettingsService: UserSettingsService,
+        private tracking: TrackingService,
     ) {}
 
     ngOnInit() {
@@ -37,6 +39,8 @@ export class AppComponent implements OnInit {
         this.userSettingsService.reverseLayoutUpdated$.subscribe(() => {
             this.reverse = this.userSettingsService.getReverseLayout();
         });
+
+        this.tracking.initialize();
     }
 
     private unityLoaded() {
