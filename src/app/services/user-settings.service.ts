@@ -19,8 +19,12 @@ export class UserSettingsService {
         this.reverseLayoutUpdated$ = this.reverseLayoutUpdatedSubject.asObservable();
     }
 
-    getSpellQuizSpeed() {
-        return 1.5;
+    getQuizSpeed() {
+        return Number(window.localStorage.getItem('vrasl_quiz_speed') ?? '1.5');
+    }
+
+    setQuizSpeed(speed: number) {
+        window.localStorage.setItem('vrasl_quiz_speed', JSON.stringify(speed));
     }
 
     setSpellingQuizScore(score: SpellingQuizScore) {

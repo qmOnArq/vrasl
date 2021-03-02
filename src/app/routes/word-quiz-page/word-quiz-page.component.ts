@@ -133,7 +133,7 @@ export class WordQuizPageComponent implements OnInit {
                 return;
             }
 
-            this.unityService.setSpeed(1, false);
+            this.unityService.setSpeed(this.userSettingsService.getQuizSpeed(), false);
             this.unityService.selectClip(this.currentWord, false);
             this.unityService.play(false);
         });

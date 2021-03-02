@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from "@angular/core";
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { UserSettingsService } from '../../services/user-settings.service';
 import { TrackingService } from '../../services/tracking.service';
 import { SnotifyPosition, SnotifyService } from 'ng-snotify';
@@ -13,6 +13,7 @@ import { Deferred } from '../../services/deferred';
 })
 export class SettingsPageComponent implements OnInit {
     reverseLayout = this.userSettingsService.getReverseLayout();
+    quizSpeed = this.userSettingsService.getQuizSpeed();
 
     constructor(
         private userSettingsService: UserSettingsService,
@@ -22,6 +23,11 @@ export class SettingsPageComponent implements OnInit {
     ) {}
 
     ngOnInit(): void {}
+
+    setQuizSpeed(newSpeed: number) {
+        this.quizSpeed = newSpeed;
+        this.userSettingsService.setQuizSpeed(newSpeed);
+    }
 
     onReverseLayoutChange(enabled: boolean) {
         this.reverseLayout = enabled;

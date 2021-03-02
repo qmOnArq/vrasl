@@ -13,3 +13,62 @@ button {
     display: block;
     margin: 20px 0;
 }
+
+.speed-slider-container {
+    height: 36px;
+    flex: 1;
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+
+    span {
+        font-weight: bold;
+        margin-top: 10px;
+        display: block;
+        user-select: none;
+    }
+
+    .speed-slider {
+        appearance: none;
+        width: 100%;
+        height: 8px;
+        border-radius: 10px;
+        background: var(--color-2);
+        outline: none;
+        opacity: 0.7;
+        transition: opacity var(--transition-1);
+        position: relative;
+
+        &:hover {
+            transition: opacity 0s;
+            opacity: 1;
+        }
+
+        &::-webkit-slider-thumb {
+            appearance: none;
+            width: 25px;
+            height: 25px;
+            background: var(--color-4);
+            cursor: pointer;
+            border-radius: 50%;
+
+            &:hover {
+                background: var(--color-5);
+            }
+        }
+
+        &::-moz-range-thumb {
+            width: 25px;
+            height: 25px;
+            background: var(--color-4);
+            cursor: pointer;
+            border-radius: 50%;
+
+            &:hover {
+                background: var(--color-5);
+            }
+        }
+    }
+}

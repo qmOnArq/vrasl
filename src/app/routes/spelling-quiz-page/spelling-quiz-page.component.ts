@@ -89,7 +89,11 @@ export class SpellingQuizPageComponent implements OnInit, OnDestroy {
                 this.lifetimeScore.perfect++;
                 this.sessionScore.perfect++;
                 this.userSettingsService.setSpellingQuizScore(this.lifetimeScore);
-                this.trackingService.track('spelling-quiz-submit', { word: this.currentWord, score: 'perfect' });
+                this.trackingService.track('spelling-quiz-submit', {
+                    word: this.currentWord,
+                    score: 'perfect',
+                    speed: this.userSettingsService.getQuizSpeed(),
+                });
 
                 this.snotifyService.success('', 'Perfect!', {
                     position: SnotifyPosition.centerTop,
@@ -106,7 +110,11 @@ export class SpellingQuizPageComponent implements OnInit, OnDestroy {
                 this.lifetimeScore.fine++;
                 this.sessionScore.fine++;
                 this.userSettingsService.setSpellingQuizScore(this.lifetimeScore);
-                this.trackingService.track('spelling-quiz-submit', { word: this.currentWord, score: 'fine' });
+                this.trackingService.track('spelling-quiz-submit', {
+                    word: this.currentWord,
+                    score: 'fine',
+                    speed: this.userSettingsService.getQuizSpeed(),
+                });
 
                 this.snotifyService.warning('', 'Fine!', {
                     position: SnotifyPosition.centerTop,
@@ -126,7 +134,11 @@ export class SpellingQuizPageComponent implements OnInit, OnDestroy {
                 this.lifetimeScore.wrong++;
                 this.sessionScore.wrong++;
                 this.userSettingsService.setSpellingQuizScore(this.lifetimeScore);
-                this.trackingService.track('spelling-quiz-submit', { word: this.currentWord, score: 'wrong' });
+                this.trackingService.track('spelling-quiz-submit', {
+                    word: this.currentWord,
+                    score: 'wrong',
+                    speed: this.userSettingsService.getQuizSpeed(),
+                });
             } else {
                 this.snotifyService.error(`${this.tries} ${this.tries !== 1 ? 'tries' : 'try'} left`, 'Wrong!', {
                     position: SnotifyPosition.centerTop,
@@ -188,7 +200,7 @@ export class SpellingQuizPageComponent implements OnInit, OnDestroy {
         }
 
         this.unityService.loaded().then(() => {
-            this.unityService.setSpeed(this.userSettingsService.getSpellQuizSpeed(), false);
+            this.unityService.setSpeed(this.userSettingsService.getQuizSpeed(), false);
 
             if (this.clipIndex === this.clips.length) {
                 this.unityService.stop(false);
@@ -202,7 +214,7 @@ export class SpellingQuizPageComponent implements OnInit, OnDestroy {
             if (this.clipIndex <= this.clips.length) {
                 this.timeout = setTimeout(() => {
                     this.playNextClip();
-                }, (AslWordsDurations[currentClip] * 1000) / this.userSettingsService.getSpellQuizSpeed());
+                }, (AslWordsDurations[currentClip] * 1000) / this.userSettingsService.getQuizSpeed());
             }
         });
     }
