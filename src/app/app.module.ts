@@ -20,6 +20,7 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import { SpellingQuizPageComponent } from './routes/spelling-quiz-page/spelling-quiz-page.component';
 import { SettingsPageComponent } from './routes/settings-page/settings-page.component';
 import { WordQuizPageComponent } from './routes/word-quiz-page/word-quiz-page.component';
+import { AlwaysFocusDirective } from './directives/always-focus.directive';
 
 @NgModule({
     declarations: [
@@ -37,6 +38,7 @@ import { WordQuizPageComponent } from './routes/word-quiz-page/word-quiz-page.co
         SpellingQuizPageComponent,
         SettingsPageComponent,
         WordQuizPageComponent,
+        AlwaysFocusDirective,
     ],
     imports: [
         BrowserModule,

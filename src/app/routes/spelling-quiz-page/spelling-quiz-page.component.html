@@ -52,6 +52,7 @@
             [(ngModel)]="yourGuess"
             (keyup.enter)="submitAnswer()"
             (keyup.escape)="yourGuess = ''"
+            [aAlwaysFocus]="true"
         />
     </label>
 

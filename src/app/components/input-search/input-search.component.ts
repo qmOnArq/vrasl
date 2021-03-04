@@ -12,6 +12,8 @@ export class InputSearchComponent implements OnInit {
     @Input() value = '';
     @Output() valueChange = new EventEmitter<string>();
 
+    @Input() alwaysFocus = false;
+
     constructor() {}
 
     ngOnInit() {}

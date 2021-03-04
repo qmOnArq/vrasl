@@ -2,6 +2,7 @@
     <div class="input-wrapper">
         <a-input-search
             [value]="filterQuery"
+            [alwaysFocus]="true"
             (valueChange)="onFilterQueryChange($event)"
         ></a-input-search>
     </div>
