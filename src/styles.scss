@@ -14,21 +14,22 @@ body, html {
     padding: 0;
     margin: 0;
     background: var(--color-3);
-    color: var(--color-1);
+    color: var(--color-text-basic);
+    transition: background var(--transition-theme-switch), color var(--transition-theme-switch);
 }
 
 ::placeholder {
-    color: var(--color-1);
+    color: var(--color-text-basic);
     opacity: 0.4;
 }
 
 :-ms-input-placeholder {
-    color: var(--color-1);
+    color: var(--color-text-basic);
     opacity: 0.4;
 }
 
 ::-ms-input-placeholder {
-    color: var(--color-1);
+    color: var(--color-text-basic);
     opacity: 0.4;
 }
 
@@ -46,6 +47,9 @@ button {
     --color-7: #e5d166;
     --color-8: #504935;
 
+    --color-background: white;
+    --color-text-basic: var(--color-1);
+
     --color-gray-1: #f8f7fd;
     --color-gray-2: #f4f2fc;
     --color-gray-3: #d8ddef;
@@ -55,12 +59,29 @@ button {
     --shadow-1: 0 4px 8px 0 rgb(99 102 150 / 25%);
 
     --transition-1: 0.3s;
+    --transition-theme-switch: 0s;
+}
+
+body.theme-dark {
+    background: #221908;
+    --color-background: #1f1f1f;
+    --color-text-basic: #f0f0f0;
+    caret-color: var(--color-text-basic);
+
+    --shadow-1: 0 4px 8px 0 #000000;
+
+    --color-gray-1: #353535;
+    --color-gray-2: #4b4b4b;
+    --color-gray-3: #626262;
+}
+
+body.initialized {
+    --transition-theme-switch: 0.3s;
 }
 
 html {
     $scrollbar-thumb-thickness: 10px;
     $scrollbar-thumb-radius: 8px;
-    $color-scrollbar-thumb-border-color: rgb(255, 255, 255);
     $color-scrollbar-thumb-bg: rgba($sass-kimberly-lite, .5);
     $color-scrollbar-thumb-bg-hover: rgba($sass-kimberly-lite, .75);
     $color-scrollbar-thumb-bg-active: $sass-kimberly-lite;
@@ -79,8 +100,10 @@ html {
 
     ::-webkit-scrollbar-thumb {
         border-radius: $scrollbar-thumb-radius;
-        border: 2px solid $color-scrollbar-thumb-border-color;
+        border: 2px solid var(--color-background);
         background-color: $color-scrollbar-thumb-bg;
+
+        transition: border var(--transition-theme-switch);
 
         // state
         &:hover {

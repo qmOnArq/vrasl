@@ -12,6 +12,8 @@ input {
     outline: none;
     border: 1px solid var(--color-gray-3);
     border-radius: 2px;
+    background: var(--color-white);
+    color: var(--color-text-basic);
 
     &:focus {
         border-color: var(--color-7);

@@ -7,8 +7,10 @@
     overflow: hidden;
     margin: 0 auto;
     box-shadow: var(--shadow-1);
-    background: white;
+    background: var(--color-background);
     flex-direction: row;
+
+    transition: background var(--transition-theme-switch);
 
     &.reverse {
         flex-direction: row-reverse;

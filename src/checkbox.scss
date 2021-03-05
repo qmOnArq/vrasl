@@ -8,7 +8,7 @@ input[type='checkbox'] + label {
     position: relative;
     display: flex;
     align-items: center;
-    color: var(--color-1);
+    color: var(--color-text-basic);
     transition: color 250ms cubic-bezier(.4, .0, .23, 1);
     font-size: 14px;
     user-select: none;
@@ -23,7 +23,7 @@ input[type='checkbox'] + label > span {
     width: 16px;
     height: 16px;
     background: transparent;
-    border: 2px solid var(--color-1);
+    border: 2px solid var(--color-text-basic);
     border-radius: 2px;
     cursor: pointer;
     transition: all 250ms cubic-bezier(.4, .0, .23, 1);

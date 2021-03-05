@@ -12,12 +12,12 @@ import { TrackingService } from './services/tracking.service';
     preserveWhitespaces: false,
 })
 export class AppComponent implements OnInit {
+    @HostBinding('class.reverse')
+    private reverse = this.userSettingsService.getReverseLayout();
+
     @ViewChild('iframe') private iframe?: ElementRef<HTMLIFrameElement>;
 
     loading$ = new BehaviorSubject(true);
-
-    @HostBinding('class.reverse')
-    private reverse = this.userSettingsService.getReverseLayout();
 
     constructor(
         private unityService: UnityService,
@@ -38,6 +38,11 @@ export class AppComponent implements OnInit {
 
         this.userSettingsService.reverseLayoutUpdated$.subscribe(() => {
             this.reverse = this.userSettingsService.getReverseLayout();
+        });
+
+        document.body.classList.add(`theme-${this.userSettingsService.getTheme()}`);
+        setTimeout(() => {
+            document.body.classList.add(`initialized`);
         });
 
         this.tracking.initialize();

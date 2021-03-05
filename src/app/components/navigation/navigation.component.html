@@ -14,10 +14,11 @@
             </span>
         </a>
     </div>
-    <div
-        class="title"
-        style="opacity: 0"
-    >
-        <div>VR ASL</div>
+    <div class="theme-switch">
+        <button (click)="switchTheme()">
+            <span class="material-icons-round">
+                {{ getTheme() === 'light' ? 'dark_mode' : 'light_mode' }}
+            </span>
+        </button>
     </div>
 </nav>

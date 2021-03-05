@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { UserSettingsService } from '../../services/user-settings.service';
 
 @Component({
     selector: 'a-navigation',
@@ -27,7 +28,7 @@ export class NavigationComponent implements OnInit {
         },
     ];
 
-    constructor() {}
+    constructor(private userSettingsService: UserSettingsService) {}
 
     ngOnInit() {}
 
@@ -43,5 +44,13 @@ export class NavigationComponent implements OnInit {
             return true;
         }
         return currentPath.startsWith(path);
+    }
+
+    switchTheme() {
+        this.userSettingsService.setTheme(this.userSettingsService.getTheme() === 'light' ? 'dark' : 'light');
+    }
+
+    getTheme() {
+        return this.userSettingsService.getTheme();
     }
 }

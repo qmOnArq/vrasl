@@ -19,6 +19,16 @@ export class UserSettingsService {
         this.reverseLayoutUpdated$ = this.reverseLayoutUpdatedSubject.asObservable();
     }
 
+    getTheme() {
+        return window.localStorage.getItem('vrasl_theme') ?? 'light';
+    }
+
+    setTheme(theme: string) {
+        document.body.classList.remove(`theme-${this.getTheme()}`);
+        document.body.classList.add(`theme-${theme}`);
+        window.localStorage.setItem('vrasl_theme', theme);
+    }
+
     getQuizSpeed() {
         return Number(window.localStorage.getItem('vrasl_quiz_speed') ?? '1.5');
     }
